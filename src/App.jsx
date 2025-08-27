@@ -4,13 +4,28 @@ import { useEffect, useState } from 'react'
 
 function App() {
 
-
+  // Initializing Variables:
   const [data, setData] = useState([]);
-  const [measure, setMeasure] = useState("");
-  const [developmentalLevel, setdevelopmentalLevel] = useState("");
-  const [teachingStrat, setTeachingStrat] = useState("");
-  const [resource, setResource] = useState("");
 
+  const [measure, setMeasure] = useState("");
+  const [measureOpen, setMeasureOpen] = useState(false);
+  const [ATLOpen, setATLOpen] = useState(false);
+  const [SEDOpen, setSEDOpen] = useState(false);
+  const [LLDOpen, setLLDOpen] = useState(false);
+  const [COGOpen, setCOGOpen] = useState(false);
+  const [PHYOpen, setPHYOpen] = useState(false);
+
+
+  const [developmentalLevel, setdevelopmentalLevel] = useState("");
+  const [developmentalLevelOpen, setDevelopmentalLevelOpen] = useState(false);
+
+  const [teachingStrat, setTeachingStrat] = useState("");
+  const [teachingStratOpen, setTeachingStratOpen] = useState(false);
+
+  const [resource, setResource] = useState("");
+  const [resourceOpen, setResourceOpen] = useState(false);
+
+  // Data For Dropdowns:
   const measures = {
     "Approaches to Learning": [
       "ATL-REG 1: Attention Maintenance",
@@ -79,6 +94,50 @@ function App() {
     "CDC"
   ]
 
+  // Functions:
+  const measureDropDown = () => {
+    if (measureOpen){
+      setATLOpen(false);
+      setSEDOpen(false);
+      setLLDOpen(false);
+      setCOGOpen(false);
+      setPHYOpen(false);
+    }
+    setMeasureOpen(!measureOpen);
+  }
+
+  const atlDropDown = () => {
+    setATLOpen(!ATLOpen);
+  }
+
+  const sedDropDown = () => {
+    setSEDOpen(!SEDOpen);
+  }
+
+  const lldDropDown = () => {
+    setLLDOpen(!LLDOpen);
+  }
+
+  const cogDropDown = () => {
+    setCOGOpen(!COGOpen);
+  }
+
+  const phyDropDown = () => {
+    setPHYOpen(!PHYOpen);
+  }
+
+  const developmentalLevelDropDown = () => {
+    setDevelopmentalLevelOpen(!developmentalLevelOpen);
+  }
+
+  const teachingStratDropDown = () => {
+    setTeachingStratOpen(!teachingStratOpen);
+  }
+
+  const resourceDropDown = () => {
+    setResourceOpen(!resourceOpen);
+  }
+
 
   // Grab data from sampleData.csv
   useEffect(() => {
@@ -94,6 +153,9 @@ function App() {
     // Ex: data[0]["DRDP Measure"]
 
 
+    // Testing:
+
+
   return (
 
     <div className = "container">
@@ -101,10 +163,69 @@ function App() {
         <h1>Early Head Start's "DRDP Tool"</h1>
       </div>
       <div className = "body">
-        <h2>Measure</h2>
-        <h2>Developmental Level</h2>
-        <h2>Teaching Strategies</h2>
-        <h2>Resources</h2>
+        <div className = "dropdownContainer">
+          <button onClick = {measureDropDown} className = "dropdown">Measure {measureOpen ? "▲" : "▼"}</button>
+          {measureOpen && <>
+            <button onClick = {atlDropDown}>Approaches to Learning {ATLOpen ? "▲" : "▼"}</button>
+            {ATLOpen &&
+              measures["Approaches to Learning"].map((measure) => (
+                  <div>{measure}</div>
+                ))}
+
+            <button onClick = {sedDropDown}>Social and Emotional Development {SEDOpen ? "▲" : "▼"}</button>
+            {SEDOpen &&
+              measures["Social and Emotional Development"].map((measure) => (
+                  <div>{measure}</div>
+                ))}
+
+            <button onClick = {lldDropDown}>Language and Literacy {LLDOpen ? "▲" : "▼"}</button>
+            {LLDOpen &&
+              measures["Language and Literacy"].map((measure) => (
+                  <div>{measure}</div>
+                ))}
+
+            <button onClick = {cogDropDown}>Cognition {COGOpen ? "▲" : "▼"}</button>
+            {COGOpen &&
+              measures["Cognition"].map((measure) => (
+                  <div>{measure}</div>
+                ))}
+
+            <button onClick = {phyDropDown}>Perceptual, Motor, and Physical Development {PHYOpen ? "▲" : "▼"}</button>
+            {PHYOpen &&
+              measures["Perceptual, Motor, and Physical Development"].map((measure) => (
+                  <div>{measure}</div>
+                ))}
+            </>
+          }
+        </div>
+
+        <div className = "dropdownContainer">
+          <button onClick = {developmentalLevelDropDown} className = "dropdown">Developmental Level {developmentalLevelOpen ? "▲" : "▼"}</button>
+          {developmentalLevelOpen &&
+            developmentalLevels.map((developmentalLevel) => (
+              <div>{developmentalLevel}</div>
+            ))
+          }
+        </div>
+
+        <div className = "dropdownContainer">
+          <button onClick = {teachingStratDropDown} className = "dropdown">Teaching Strategy {teachingStratOpen ? "▲" : "▼"}</button>
+          {teachingStratOpen &&
+            teachingStrats.map((teachingStrat) => (
+              <div>{teachingStrat}</div>
+            ))
+          }
+        </div>
+
+        <div className = "dropdownContainer">
+          <button onClick = {resourceDropDown} className = "dropdown">Resources {resourceOpen ? "▲" : "▼"}</button>
+          {resourceOpen &&
+            resources.map((resource) => (
+              <div>{resource}</div>
+            ))
+          }
+        </div>
+
       </div>
     </div>
   )
