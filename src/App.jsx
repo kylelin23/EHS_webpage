@@ -162,9 +162,9 @@ function App() {
       <h1>Early Head Start's "DRDP Tool"</h1>
     </div>
 
-    {/* 👇 make the body a 2-column layout */}
-    <div className="body two-col">
-      {/* LEFT: all dropdowns grouped */}
+    <div className="body two-col"> {/*Container for two columns */}
+
+      {/*Column One: Dropdowns*/}
       <div className="dropdowns">
         <div className="dropdownContainer">
           <button onClick={measureDropDown} className="dropdown">
@@ -212,7 +212,7 @@ function App() {
             </>
           )}
         </div>
-          
+
         <div className="dropdownContainer">
           <button onClick={developmentalLevelDropDown} className="dropdown">
             Developmental Level {developmentalLevelOpen ? "▲" : "▼"}
@@ -237,7 +237,7 @@ function App() {
         </div>
       </div>
 
-      {/* RIGHT: blob */}
+      {/* Column Two: blobs */}
       <div className="blob-outer">
           <div className="blob-card">
             <svg className="blob-svg" viewBox="0 0 900 700" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
