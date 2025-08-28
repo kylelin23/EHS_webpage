@@ -2,6 +2,7 @@
   display: flex;
   /* height: 100vh; */
   width: 100vw;
+  height: 100vh;
   background-color: #fae8e0;
   /* justify-content: center; */
   flex-direction: column;
@@ -32,28 +33,7 @@ h1 {
 .dropdowns {
   display: flex;
   justify-content: center;
-}
-
-.dropdownContainer {
-  width: 20vw;
-  display: flex;
-  justify-content: center;
-
-}
-
-.dropdown {
-  background-color: rgb(0, 0, 0, 0);
-  padding-left: 0;
-  width: 20vw;
-}
-
-.measureCategory {
-  background-color: gray;
-  width: 30vw;
-}
-
-.measureStyle {
-  width: 30vw;
+  gap: 20px;
 }
 
 .blob-outer {
