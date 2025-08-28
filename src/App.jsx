@@ -162,13 +162,10 @@ function App() {
       <h1>Early Head Start's "DRDP Tool"</h1>
     </div>
 
-    <div className="body two-col"> {/*Container for two columns */}
-
-      {/*Column One: Dropdowns*/}
       <div className="dropdowns">
         <div className="dropdownContainer">
           <button onClick={measureDropDown} className="dropdown">
-            DRDP Measure {measureOpen ? "▲" : "▼"}
+            DRDP Measure: COG3, ATL-REG5 {measureOpen ? "▲" : "▼"}
           </button>
           {measureOpen && (
             <>
@@ -239,7 +236,6 @@ function App() {
         </div>
       </div>
 
-      {/* Column Two: blobs */}
       <div className="blob-outer">
           <div className="blob-card">
             <svg className="blob-svg" viewBox="0 0 900 700" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
@@ -281,7 +277,6 @@ function App() {
           </p>
         </div>
       </div>
-    </div>
 
 );
 }

@@ -29,17 +29,22 @@ h1 {
   color: black;
 }
 
-.dropdownContainer {
+.dropdowns {
   display: flex;
-  flex-direction: column;
-  width: 30vw;
-  align-items: flex-start;
+  justify-content: center;
+}
+
+.dropdownContainer {
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+
 }
 
 .dropdown {
   background-color: rgb(0, 0, 0, 0);
   padding-left: 0;
-  width: 30vw;
+  width: 20vw;
 }
 
 .measureCategory {
@@ -87,23 +92,23 @@ h1 {
   .blob-inner {
     animation: none;
   }
-
+/*
   .two-col {
     display: grid;
     grid-template-columns: minmax(280px, 520px) 1fr;
     gap: 24px;
     align-items: start;
-  }
-
+  } */
+/*
   @media (max-width: 900px) {
     .two-col{
       grid-template-columns: 1fr;
     }
-  }
-
+  } */
+/*
   .dropdowns .dropdownContainer {
     width: 100%; max-width: 520px;
-  }
+  } */
 
   .blob-outer {
     display: grid; place-items: center; margin-top: 0;
