@@ -168,46 +168,48 @@ function App() {
       <div className="dropdowns">
         <div className="dropdownContainer">
           <button onClick={measureDropDown} className="dropdown">
-            Measure {measureOpen ? "▲" : "▼"}
+            DRDP Measure {measureOpen ? "▲" : "▼"}
           </button>
           {measureOpen && (
             <>
-              <button onClick={atlDropDown}>
+              <button onClick={atlDropDown} className = "measureCategory">
                 Approaches to Learning {ATLOpen ? "▲" : "▼"}
               </button>
               {ATLOpen &&
                 measures["Approaches to Learning"].map((m) => (
-                  <div key={m}>{m}</div>
+                  <button key={m} className = "measureStyle">{m}</button>
                 ))}
 
-              <button onClick={sedDropDown}>
+              <button onClick={sedDropDown} className = "measureCategory">
                 Social and Emotional Development {SEDOpen ? "▲" : "▼"}
               </button>
               {SEDOpen &&
                 measures["Social and Emotional Development"].map((m) => (
-                  <div key={m}>{m}</div>
+                  <button key={m} className = "measureStyle">{m}</button>
                 ))}
 
-              <button onClick={lldDropDown}>
+              <button onClick={lldDropDown} className = "measureCategory">
                 Language and Literacy {LLDOpen ? "▲" : "▼"}
               </button>
               {LLDOpen &&
                 measures["Language and Literacy"].map((m) => (
-                  <div key={m}>{m}</div>
+                  <button key={m} className = "measureStyle">{m}</button>
                 ))}
 
-              <button onClick={cogDropDown}>
+              <button onClick={cogDropDown} className = "measureCategory">
                 Cognition {COGOpen ? "▲" : "▼"}
               </button>
               {COGOpen &&
-                measures["Cognition"].map((m) => <div key={m}>{m}</div>)}
+                measures["Cognition"].map((m) => (
+                <button key={m} className = "measureStyle">{m}</button>
+                ))}
 
-              <button onClick={phyDropDown}>
+              <button onClick={phyDropDown} className = "measureCategory">
                 Perceptual, Motor, and Physical Development {PHYOpen ? "▲" : "▼"}
               </button>
               {PHYOpen &&
                 measures["Perceptual, Motor, and Physical Development"].map((m) => (
-                  <div key={m}>{m}</div>
+                  <button key={m} className = "measureStyle">{m}</button>
                 ))}
             </>
           )}

@@ -39,6 +39,16 @@ h1 {
 .dropdown {
   background-color: rgb(0, 0, 0, 0);
   padding-left: 0;
+  width: 30vw;
+}
+
+.measureCategory {
+  background-color: gray;
+  width: 30vw;
+}
+
+.measureStyle {
+  width: 30vw;
 }
 
 .blob-outer {
