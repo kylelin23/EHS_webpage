@@ -40,3 +40,41 @@ h1 {
   background-color: rgb(0, 0, 0, 0);
   padding-left: 0;
 }
+
+.blob-outer {
+  display: grid;
+  place-items: center;
+  margin-top: 16px;
+}
+
+.blob-inner {
+  --blob-bg: #0bb6af;
+  --text-color: #ffffff;
+  background: var(--blob-bg);
+  color: var(--text-color);
+  width: min(90vw, 720px);
+  padding: clamp(20px, 4vw, 48px);
+  text-align: center;
+  line-height: 1.5;
+  font-size: clamp(16px, 2.2vw, 20px);
+  font-weight: 500;
+  margin: 12px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);  /* fixed */
+  border-radius: 42% 58% 64% 36% / 35% 39% 61% 65%;
+  animation: blobMorph 12s ease-in-out infinite;
+}
+
+@keyframes blobMorph {
+  0%   { border-radius: 42% 58% 64% 36% / 35% 39% 61% 65%; transform: rotate(0deg); }
+  25%  { border-radius: 60% 40% 35% 65% / 55% 35% 65% 45%; transform: rotate(2deg); }
+  50%  { border-radius: 48% 52% 42% 58% / 44% 60% 40% 56%; transform: rotate(0deg); }
+  75%  { border-radius: 36% 64% 58% 42% / 40% 62% 38% 60%; transform: rotate(-2deg); }
+  100% { border-radius: 42% 58% 64% 36% / 35% 39% 61% 65%; transform: rotate(0deg); }
+}
+
+.blob-inner p { margin: 0; }
+.blob-inner p strong { font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-inner { animation: none; }
+}

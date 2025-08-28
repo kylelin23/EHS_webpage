@@ -158,10 +158,21 @@ function App() {
 
   return (
 
+
     <div className = "container">
       <div className = "header">
         <h1>Early Head Start's "DRDP Tool"</h1>
+        <div className= "blob-outer">
+          <div className = "blob-inner">
+            <p>
+              <strong> Welcome teachers!</strong> <br />
+              Here is a tool you can use to help the desired teaching strategies based on a child's developmental profile
+            </p>
+          </div>
+        </div>
       </div>
+
+
       <div className = "body">
         <div className = "dropdownContainer">
           <button onClick = {measureDropDown} className = "dropdown">Measure {measureOpen ? "▲" : "▼"}</button>
