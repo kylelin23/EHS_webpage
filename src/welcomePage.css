@@ -1,11 +1,9 @@
 .container {
   display: flex;
-  /* height: 100vh; */
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background-color: #fae8e0;
-  /* justify-content: center; */
-  flex-direction: column;
 }
 
 .header {
@@ -24,16 +22,6 @@ h1 {
 .body {
   height: 80vh;
   padding: 20px;
-}
-
-.data {
-  color: black;
-}
-
-.dropdowns {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
 }
 
 .blob-outer {
