@@ -157,89 +157,131 @@ function App() {
 
 
   return (
+  <div className="container">
+    <div className="header">
+      <h1>Early Head Start's "DRDP Tool"</h1>
+    </div>
 
-
-    <div className = "container">
-      <div className = "header">
-        <h1>Early Head Start's "DRDP Tool"</h1>
-        <div className= "blob-outer">
-          <div className = "blob-inner">
-            <p>
-              <strong> Welcome teachers!</strong> <br />
-              Here is a tool you can use to help the desired teaching strategies based on a child's developmental profile
-            </p>
-          </div>
-        </div>
-      </div>
-
-
-      <div className = "body">
-        <div className = "dropdownContainer">
-          <button onClick = {measureDropDown} className = "dropdown">Measure {measureOpen ? "▲" : "▼"}</button>
-          {measureOpen && <>
-            <button onClick = {atlDropDown}>Approaches to Learning {ATLOpen ? "▲" : "▼"}</button>
-            {ATLOpen &&
-              measures["Approaches to Learning"].map((measure) => (
-                  <div>{measure}</div>
+    {/* 👇 make the body a 2-column layout */}
+    <div className="body two-col">
+      {/* LEFT: all dropdowns grouped */}
+      <div className="dropdowns">
+        <div className="dropdownContainer">
+          <button onClick={measureDropDown} className="dropdown">
+            Measure {measureOpen ? "▲" : "▼"}
+          </button>
+          {measureOpen && (
+            <>
+              <button onClick={atlDropDown}>
+                Approaches to Learning {ATLOpen ? "▲" : "▼"}
+              </button>
+              {ATLOpen &&
+                measures["Approaches to Learning"].map((m) => (
+                  <div key={m}>{m}</div>
                 ))}
 
-            <button onClick = {sedDropDown}>Social and Emotional Development {SEDOpen ? "▲" : "▼"}</button>
-            {SEDOpen &&
-              measures["Social and Emotional Development"].map((measure) => (
-                  <div>{measure}</div>
+              <button onClick={sedDropDown}>
+                Social and Emotional Development {SEDOpen ? "▲" : "▼"}
+              </button>
+              {SEDOpen &&
+                measures["Social and Emotional Development"].map((m) => (
+                  <div key={m}>{m}</div>
                 ))}
 
-            <button onClick = {lldDropDown}>Language and Literacy {LLDOpen ? "▲" : "▼"}</button>
-            {LLDOpen &&
-              measures["Language and Literacy"].map((measure) => (
-                  <div>{measure}</div>
+              <button onClick={lldDropDown}>
+                Language and Literacy {LLDOpen ? "▲" : "▼"}
+              </button>
+              {LLDOpen &&
+                measures["Language and Literacy"].map((m) => (
+                  <div key={m}>{m}</div>
                 ))}
 
-            <button onClick = {cogDropDown}>Cognition {COGOpen ? "▲" : "▼"}</button>
-            {COGOpen &&
-              measures["Cognition"].map((measure) => (
-                  <div>{measure}</div>
-                ))}
+              <button onClick={cogDropDown}>
+                Cognition {COGOpen ? "▲" : "▼"}
+              </button>
+              {COGOpen &&
+                measures["Cognition"].map((m) => <div key={m}>{m}</div>)}
 
-            <button onClick = {phyDropDown}>Perceptual, Motor, and Physical Development {PHYOpen ? "▲" : "▼"}</button>
-            {PHYOpen &&
-              measures["Perceptual, Motor, and Physical Development"].map((measure) => (
-                  <div>{measure}</div>
+              <button onClick={phyDropDown}>
+                Perceptual, Motor, and Physical Development {PHYOpen ? "▲" : "▼"}
+              </button>
+              {PHYOpen &&
+                measures["Perceptual, Motor, and Physical Development"].map((m) => (
+                  <div key={m}>{m}</div>
                 ))}
             </>
-          }
+          )}
         </div>
-
-        <div className = "dropdownContainer">
-          <button onClick = {developmentalLevelDropDown} className = "dropdown">Developmental Level {developmentalLevelOpen ? "▲" : "▼"}</button>
+          
+        <div className="dropdownContainer">
+          <button onClick={developmentalLevelDropDown} className="dropdown">
+            Developmental Level {developmentalLevelOpen ? "▲" : "▼"}
+          </button>
           {developmentalLevelOpen &&
-            developmentalLevels.map((developmentalLevel) => (
-              <div>{developmentalLevel}</div>
-            ))
-          }
+            developmentalLevels.map((lvl) => <div key={lvl}>{lvl}</div>)}
         </div>
 
-        <div className = "dropdownContainer">
-          <button onClick = {teachingStratDropDown} className = "dropdown">Teaching Strategy {teachingStratOpen ? "▲" : "▼"}</button>
+        <div className="dropdownContainer">
+          <button onClick={teachingStratDropDown} className="dropdown">
+            Teaching Strategy {teachingStratOpen ? "▲" : "▼"}
+          </button>
           {teachingStratOpen &&
-            teachingStrats.map((teachingStrat) => (
-              <div>{teachingStrat}</div>
-            ))
-          }
+            teachingStrats.map((ts) => <div key={ts}>{ts}</div>)}
         </div>
 
-        <div className = "dropdownContainer">
-          <button onClick = {resourceDropDown} className = "dropdown">Resources {resourceOpen ? "▲" : "▼"}</button>
-          {resourceOpen &&
-            resources.map((resource) => (
-              <div>{resource}</div>
-            ))
-          }
+        <div className="dropdownContainer">
+          <button onClick={resourceDropDown} className="dropdown">
+            Resources {resourceOpen ? "▲" : "▼"}
+          </button>
+          {resourceOpen && resources.map((r) => <div key={r}>{r}</div>)}
         </div>
+      </div>
 
+      {/* RIGHT: blob */}
+      <div className="blob-outer">
+          <div className="blob-card">
+            <svg className="blob-svg" viewBox="0 0 900 700" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="blobGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%"  stopColor="#0bb6af" />
+                  <stop offset="100%" stopColor="#089e97" />
+                </linearGradient>
+              </defs>
+              {/* Path shaped to look like your Canva blob (top bump + bottom tail) */}
+              <path fill="url(#blobGrad)" d="
+                M140,330
+                C 60,300 20,240 30,190
+                C 45,120 130,90 230,120
+                C 320,146 360,70 445,45
+                C 520,24 590,60 640,115
+                C 700,180 790,170 850,225
+                C 900,270 900,350 860,405
+                C 825,452 790,480 770,520
+                C 740,580 700,640 610,660
+                C 520,680 450,640 410,600
+                C 365,555 330,545 270,560
+                C 210,575 150,550 130,500
+                C 110,450 120,380 140,330 Z" />
+            </svg>
+
+            <div className="blob-text">
+              <strong>Welcome teachers!</strong><br />
+              Here is a tool you can use to find the desired teaching strategies
+              based on a child's developmental profile.
+            </div>
+          </div>
+        </div>
+        <div className="blob-inner">
+          <p>
+            <strong>Welcome teachers!</strong><br />
+            Here is a tool you can use to find the desired teaching strategies
+            based on a child's developmental profile.
+          </p>
+        </div>
       </div>
     </div>
-  )
+
+);
 }
 
 export default App
