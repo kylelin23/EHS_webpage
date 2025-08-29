@@ -115,27 +115,36 @@ function DataPage() {
     // How to get parsed data: data[index][category]
     // Ex: data[0]["DRDP Measure"]
 
-    let filteredData = selectedMeasure
-      ? data.filter(row => row["DRDP Measure"] === selectedMeasure.value)
-      : data;
+    let filteredData = [];
 
-    if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
-      filteredData = filteredData.filter(row => {
-        const levels = row["DRDP Developmental Level"].split(',').map(l => l.trim());
-        return selectedDevelopmentalLevel.some(level => levels.includes(level.value));
-      });
+    if (
+      selectedMeasure ||
+      (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) ||
+      (selectedTeachingStrats && selectedTeachingStrats.length > 0) ||
+      selectedResources
+    ) {
+      filteredData = selectedMeasure
+        ? data.filter(row => row["DRDP Measure"] === selectedMeasure.value)
+        : data;
+
+      if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
+        filteredData = filteredData.filter(row => {
+          const levels = row["DRDP Developmental Level"].split(',').map(l => l.trim());
+          return selectedDevelopmentalLevel.some(level => levels.includes(level.value));
+        });
+      }
+
+      if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
+        filteredData = filteredData.filter(row => {
+          const levels2 = row["Teaching Practice Category"].split(',').map(l => l.trim());
+          return selectedTeachingStrats.some(level2 => levels2.includes(level2.value));
+        });
+      }
+
+      filteredData = selectedResources
+        ? filteredData.filter(row => row["Resource Agency"] === selectedResources.value)
+        : filteredData;
     }
-
-    if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
-      filteredData = filteredData.filter(row => {
-        const levels2 = row["Teaching Practice Category"].split(',').map(l=>l.trim());
-        return selectedTeachingStrats.some(level2 => levels2.includes(level2.value));
-      });
-    }
-
-    filteredData = selectedResources
-      ? filteredData.filter(row => row["Resource Agency"] === selectedResources.value)
-      : filteredData;
 
 
     // Testing:
@@ -184,7 +193,14 @@ function DataPage() {
 
       <div className = "data">
         {filteredData.map((teachingPractice, index) => (
-          <div className = "dataText" key = {index}>{teachingPractice["DRDP Measure"]}</div>
+          <div key = {index}>
+            <a href={teachingPractice["URL"]} className = "dataLink">
+              <u>{teachingPractice["Resource Variable"]} ({teachingPractice["Activity Title 1"]}): {teachingPractice["Age Range (if applicable)"]} months</u>
+            </a>
+            <div className = "dataText">
+              {teachingPractice["Activity Description 1 (Environments)"]}
+            </div>
+          </div>
         ))}
       </div>
 
