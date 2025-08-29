@@ -120,15 +120,17 @@ function DataPage() {
       : data;
 
     if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
-      filteredData = filteredData.filter(row =>
-        selectedDevelopmentalLevel.some(level => row["DRDP Developmental Level"] === level.value)
-      );
+      filteredData = filteredData.filter(row => {
+        const levels = row["DRDP Developmental Level"].split(',').map(l => l.trim());
+        return selectedDevelopmentalLevel.some(level => levels.includes(level.value));
+      });
     }
 
     if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
-      filteredData = filteredData.filter(row =>
-        selectedTeachingStrats.some(level => row["Teaching Practice Category"] === level.value)
-      );
+      filteredData = filteredData.filter(row => {
+        const levels2 = row["Teaching Practice Category"].split(',').map(l=>l.trim());
+        return selectedTeachingStrats.some(level2 => levels2.includes(level2.value));
+      });
     }
 
     filteredData = selectedResources
