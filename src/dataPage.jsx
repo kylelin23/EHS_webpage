@@ -61,12 +61,12 @@ function DataPage() {
   ];
 
   const developmentalLevels = [
-    {value: 'respondingEarlier', label: 'Responding Earlier'},
-    {value: 'respondingLater', label: 'Responding Later'},
-    {value: 'exploringEarlier', label: 'Exploring Earlier'},
-    {value: 'exploringMiddle', label: 'Exploring Middle'},
-    {value: 'exploringLater', label: 'Exploring Later'},
-    {value: 'buildingEarlier', label: 'Building Earlier'},
+    {value: 'respondingEarlier', label: 'Responding Earlier', isImportant: true},
+    {value: 'respondingLater', label: 'Responding Later', isImportant: false},
+    {value: 'exploringEarlier', label: 'Exploring Earlier', isImportant: false},
+    {value: 'exploringMiddle', label: 'Exploring Middle', isImportant: false},
+    {value: 'exploringLater', label: 'Exploring Later', isImportant: false},
+    {value: 'buildingEarlier', label: 'Building Earlier', isImportant: false},
   ];
 
   const teachingStrats = [
@@ -89,6 +89,18 @@ function DataPage() {
     navigate("/");
   }
 
+  // Styling:
+  const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    color: state.data.isImportant ? 'red' : 'black', // red if isImportant is true
+    backgroundColor: state.isSelected ? '#ddd' : 'white',
+  }),
+  singleValue: (provided, state) => ({
+    ...provided,
+    color: state.data.isImportant ? 'red' : 'black', // selected value color
+  }),
+};
 
   // Grab data from sampleData.csv
   useEffect(() => {
@@ -121,28 +133,27 @@ function DataPage() {
           onChange={(selected) => setSelectedMeasure(selected)}
           placeholder="Select DRDP Measure"
           options = {measures}
-          isMulit
         />
         <Select
           defaultValue = {selectedDevelopmentalLevel}
           onChange={(selected) => setSelectedDevelopmentalLevel(selected)}
           placeholder="Select Developmental Level"
           options = {developmentalLevels}
-          isMulit
+          isMulti
+          styles = {customStyles}
         />
         <Select
           defaultValue = {selectedTeachingStrats}
           onChange={(selected) => setSelectedTeachingStrats(selected)}
           placeholder="Select Teaching Strategy"
           options = {teachingStrats}
-          isMulit
+          isMulti
         />
         <Select
           defaultValue = {selectedResources}
           onChange={(selected) => setSelectedResources(selected)}
           placeholder="Select Resources"
           options = {resources}
-          isMulit
         />
       </div>
       <button onClick = {navigateBack}>Back</button>
