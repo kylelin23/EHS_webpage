@@ -61,27 +61,27 @@ function DataPage() {
   ];
 
   const developmentalLevels = [
-    {value: 'respondingEarlier', label: 'Responding Earlier', isImportant: true},
-    {value: 'respondingLater', label: 'Responding Later', isImportant: false},
-    {value: 'exploringEarlier', label: 'Exploring Earlier', isImportant: false},
-    {value: 'exploringMiddle', label: 'Exploring Middle', isImportant: false},
-    {value: 'exploringLater', label: 'Exploring Later', isImportant: false},
-    {value: 'buildingEarlier', label: 'Building Earlier', isImportant: false},
+    {value: 'RE', label: 'Responding Earlier', isImportant: true},
+    {value: 'RL', label: 'Responding Later', isImportant: false},
+    {value: 'EE', label: 'Exploring Earlier', isImportant: false},
+    {value: 'EM', label: 'Exploring Middle', isImportant: false},
+    {value: 'EL', label: 'Exploring Later', isImportant: false},
+    {value: 'BE', label: 'Building Earlier', isImportant: false},
   ];
 
   const teachingStrats = [
-    { value: 'plannedLearning', label: 'Planned Learning Activity' },
-    { value: 'interactions', label: 'Interactions/Teaching Strategies' },
-    { value: 'learningEnvironment', label: 'Learning Environment and Materials' },
-    { value: 'familyEngagement', label: 'Family Engagement' },
-    { value: 'professionalGrowth', label: 'Professional Growth and Development' },
+    { value: 'Planned Learning Activity', label: 'Planned Learning Activity' },
+    { value: 'Interactions/Teaching Strategies', label: 'Interactions/Teaching Strategies' },
+    { value: 'Learning Environment and Materials', label: 'Learning Environment and Materials' },
+    { value: 'Family Engagement', label: 'Family Engagement' },
+    { value: 'Professional Growth and Development', label: 'Professional Growth and Development' },
   ];
 
   const resources = [
-    { value: 'frogStreet', label: 'Frog Street' },
-    { value: 'learningGenieFamilyEngagement', label: 'Learning Genie Family Engagement' },
-    { value: 'asqActivities', label: 'ASQ Activities' },
-    { value: 'itersMaterials', label: 'ITERS Materials' },
+    { value: 'FS', label: 'Frog Street' },
+    { value: 'HSELOF', label: 'HSELOF' },
+    { value: 'ASQ', label: 'ASQ Activities' },
+    { value: 'ITERS', label: 'ITERS Materials' },
   ];
 
   // Functions:
@@ -104,7 +104,7 @@ function DataPage() {
 
   // Grab data from sampleData.csv
   useEffect(() => {
-      fetch('sampleData.csv')
+      fetch('updatedSampleData.csv')
         .then(response => response.text())
         .then(text => {
           const result = Papa.parse(text, { header: true }) // Put parsed data in result
@@ -114,6 +114,26 @@ function DataPage() {
 
     // How to get parsed data: data[index][category]
     // Ex: data[0]["DRDP Measure"]
+
+    let filteredData = selectedMeasure
+      ? data.filter(row => row["DRDP Measure"] === selectedMeasure.value)
+      : data;
+
+    if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
+      filteredData = filteredData.filter(row =>
+        selectedDevelopmentalLevel.some(level => row["DRDP Developmental Level"] === level.value)
+      );
+    }
+
+    if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
+      filteredData = filteredData.filter(row =>
+        selectedTeachingStrats.some(level => row["Teaching Practice Category"] === level.value)
+      );
+    }
+
+    filteredData = selectedResources
+      ? filteredData.filter(row => row["Resource Agency"] === selectedResources.value)
+      : filteredData;
 
 
     // Testing:
@@ -129,13 +149,14 @@ function DataPage() {
 
       <div className="dropdowns">
         <Select
-          defaultValue = {selectedMeasure}
+          value = {selectedMeasure}
           onChange={(selected) => setSelectedMeasure(selected)}
           placeholder="Select DRDP Measure"
           options = {measures}
+          className = "dropdownText"
         />
         <Select
-          defaultValue = {selectedDevelopmentalLevel}
+          value = {selectedDevelopmentalLevel}
           onChange={(selected) => setSelectedDevelopmentalLevel(selected)}
           placeholder="Select Developmental Level"
           options = {developmentalLevels}
@@ -143,19 +164,28 @@ function DataPage() {
           styles = {customStyles}
         />
         <Select
-          defaultValue = {selectedTeachingStrats}
+          value = {selectedTeachingStrats}
           onChange={(selected) => setSelectedTeachingStrats(selected)}
           placeholder="Select Teaching Strategy"
           options = {teachingStrats}
           isMulti
+          className = "dropdownText"
         />
         <Select
-          defaultValue = {selectedResources}
+          value = {selectedResources}
           onChange={(selected) => setSelectedResources(selected)}
           placeholder="Select Resources"
           options = {resources}
+          className = "dropdownText"
         />
       </div>
+
+      <div className = "data">
+        {filteredData.map((teachingPractice, index) => (
+          <div className = "dataText" key = {index}>{teachingPractice["DRDP Measure"]}</div>
+        ))}
+      </div>
+
       <button onClick = {navigateBack}>Back</button>
     </div>
 

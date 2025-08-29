@@ -30,3 +30,11 @@ h1 {
   gap: 20px;
   margin-top: 10px;
 }
+
+.dropdownText {
+  color: black;
+}
+
+.dataText {
+  color: black;
+}
