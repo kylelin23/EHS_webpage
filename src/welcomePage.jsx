@@ -2,28 +2,26 @@ import './welcomePage.css'
 import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
-    const navigate = useNavigate()
-
-    const navigateButton = () => {
-        navigate("/dataPage");
-  }
+  const navigate = useNavigate();
+  const navigateButton = () => navigate("/dataPage");
 
   return (
-  <div className="container">
-    <div className="header">
-      <h1>Early Head Start's "DRDP Tool"</h1>
-    </div>
+    <div className="container">
+      <div className="header">
+        <h1>Early Head Start's "DRDP Tool"</h1>
+      </div>
 
-      <div className="blob-outer">
+      <div className="hero">
+        <div className="blob-outer">
           <div className="blob-card">
-            <svg className="blob-svg" viewBox="0 0 900 700" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+            <svg className="blob-svg" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <defs>
                 <linearGradient id="blobGrad" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%"  stopColor="#0bb6af" />
                   <stop offset="100%" stopColor="#089e97" />
                 </linearGradient>
               </defs>
-              {/* Path shaped to look like your Canva blob (top bump + bottom tail) */}
+
               <path fill="url(#blobGrad)" d="
                 M140,330
                 C 60,300 20,240 30,190
@@ -41,24 +39,17 @@ function WelcomePage() {
             </svg>
 
             <div className="blob-text">
-              <strong>Welcome teachers!</strong><br />
+              <strong>Welcome teachers!
               Here is a tool you can use to find the desired teaching strategies
-              based on a child's developmental profile.
+              based on a child's developmental profile.</strong>
             </div>
           </div>
         </div>
-        <div className="blob-inner">
-          <p>
-            <strong>Welcome teachers!</strong><br />
-            Here is a tool you can use to find the desired teaching strategies
-            based on a child's developmental profile.
-          </p>
-        </div>
-        <button onClick = {navigateButton}>Next</button>
-      </div>
 
-);
+        <button className="next-btn" onClick={navigateButton}>Next</button>
+      </div>
+    </div>
+  );
 }
 
-export default WelcomePage
-
+export default WelcomePage;
