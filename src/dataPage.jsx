@@ -21,52 +21,52 @@ function DataPage() {
   // Data For Dropdowns:
   const measures = [
     // Approaches to Learning
-    { value: 'ATL-REG1', label: 'ATL-REG 1: Attention Maintenance' },
-    { value: 'ATL-REG2', label: 'ATL-REG 2: Self-Comforting' },
-    { value: 'ATL-REG3', label: 'ATL-REG 3: Imitation' },
-    { value: 'ATL-REG4', label: 'ATL-REG 4: Curiosity and Initiative in Learning' },
-    { value: 'ATL-REG5', label: 'ATL-REG 5: Self-Control of Feelings and Behavior' },
+    { value: 'ATL-REG 1: Attention Maintenance', label: 'ATL-REG 1: Attention Maintenance' },
+    { value: 'ATL-REG 2: Self-Comforting', label: 'ATL-REG 2: Self-Comforting' },
+    { value: 'ATL-REG 3: Imitation', label: 'ATL-REG 3: Imitation' },
+    { value: 'ATL-REG 4: Curiosity and Initiative in Learning', label: 'ATL-REG 4: Curiosity and Initiative in Learning' },
+    { value: 'ATL-REG 5: Self-Control of Feelings and Behavior', label: 'ATL-REG 5: Self-Control of Feelings and Behavior' },
 
     // Social and Emotional Development
-    { value: 'SED1', label: 'SED 1: Identity of Self in Relation to Others' },
-    { value: 'SED2', label: 'SED 2: Social and Emotional Understanding' },
-    { value: 'SED3', label: 'SED 3: Relationships and Social Interactions with Familiar Adults' },
-    { value: 'SED4', label: 'SED 4: Relationships and Social Interactions with Peers' },
-    { value: 'SED5', label: 'SED 5: Symbolic and Sociodramatic Play' },
+    { value: 'SED 1: Identity of Self in Relation to Others', label: 'SED 1: Identity of Self in Relation to Others' },
+    { value: 'SED 2: Social and Emotional Understanding', label: 'SED 2: Social and Emotional Understanding' },
+    { value: 'SED 3: Relationships and Social Interactions with Familiar Adults', label: 'SED 3: Relationships and Social Interactions with Familiar Adults' },
+    { value: 'SED 4: Relationships and Social Interactions with Peers', label: 'SED 4: Relationships and Social Interactions with Peers' },
+    { value: 'SED 5: Symbolic and Sociodramatic Play', label: 'SED 5: Symbolic and Sociodramatic Play' },
 
     // Language and Literacy
-    { value: 'LLD1', label: 'LLD1: Understanding of Language (Receptive)' },
-    { value: 'LLD2', label: 'LLD2: Responsiveness to Language' },
-    { value: 'LLD3', label: 'LLD 3: Communication and Use of Language (Expressive)' },
-    { value: 'LLD4', label: 'LLD 4: Reciprocal Communication and Conversation' },
-    { value: 'LLD5', label: 'LLD 5: Interest in Literacy' },
+    { value: 'LLD 1: Understanding of Language (Receptive)', label: 'LLD1: Understanding of Language (Receptive)' },
+    { value: 'LLD 2: Responsiveness to Language', label: 'LLD2: Responsiveness to Language' },
+    { value: 'LLD 3: Communication and Use of Language (Expressive)', label: 'LLD 3: Communication and Use of Language (Expressive)' },
+    { value: 'LLD 4: Reciprocal Communication and Conversation', label: 'LLD 4: Reciprocal Communication and Conversation' },
+    { value: 'LLD 5: Interest in Literacy', label: 'LLD 5: Interest in Literacy' },
 
     // Cognition
-    { value: 'COG1', label: 'COG 1: Spatial Relationships' },
-    { value: 'COG2', label: 'COG 2: Classification' },
-    { value: 'COG3', label: 'COG 3: Number Sense of Quantity' },
+    { value: 'COG 1: Spatial Relationships', label: 'COG 1: Spatial Relationships' },
+    { value: 'COG 2: Classification', label: 'COG 2: Classification' },
+    { value: 'COG 3: Number Sense of Quantity', label: 'COG 3: Number Sense of Quantity' },
     { value: 'COG 8: Cause and Effect', label: 'COG 8: Cause and Effect' },
-    { value: 'COG9', label: 'COG 9: Inquiry Through Observation and Investigation' },
-    { value: 'COG11', label: 'COG 11: Knowledge of the Natural World' },
+    { value: 'COG 9: Inquiry Through Observation and Investigation', label: 'COG 9: Inquiry Through Observation and Investigation' },
+    { value: 'COG 11: Knowledge of the Natural World', label: 'COG 11: Knowledge of the Natural World' },
 
     // Perceptual, Motor, and Physical Development
-    { value: 'PD-HLTH1', label: 'PD-HLTH 1: Perceptual-Motor Skills and Movement Concepts' },
-    { value: 'PD-HLTH2', label: 'PD-HLTH 2: Gross Locomotor Movement Skills' },
-    { value: 'PD-HLTH3', label: 'PD-HLTH 3: Gross Motor Manipulative Skills' },
-    { value: 'PD-HLTH4', label: 'PD-HLTH 4: Fine Motor Skills' },
-    { value: 'PD-HLTH5', label: 'PD-HLTH 5: Safety' },
-    { value: 'PD-HLTH6', label: 'PD-HLTH 6: Personal Care Routines: Hygiene' },
-    { value: 'PD-HLTH7', label: 'PD-HLTH 7: Personal Care Routines: Feeding' },
-    { value: 'PD-HLTH8', label: 'PD-HLTH 8: Personal Care Routines: Dressing' },
+    { value: 'PD-HLTH 1: Perceptual-Motor Skills and Movement Concepts', label: 'PD-HLTH 1: Perceptual-Motor Skills and Movement Concepts' },
+    { value: 'PD-HLTH 2: Gross Locomotor Movement Skills', label: 'PD-HLTH 2: Gross Locomotor Movement Skills' },
+    { value: 'PD-HLTH 3: Gross Motor Manipulative Skills', label: 'PD-HLTH 3: Gross Motor Manipulative Skills' },
+    { value: 'PD-HLTH 4: Fine Motor Skills', label: 'PD-HLTH 4: Fine Motor Skills' },
+    { value: 'PD-HLTH 5: Safety', label: 'PD-HLTH 5: Safety' },
+    { value: 'PD-HLTH 6: Personal Care Routines: Hygiene', label: 'PD-HLTH 6: Personal Care Routines: Hygiene' },
+    { value: 'PD-HLTH 7: Personal Care Routines: Feeding', label: 'PD-HLTH 7: Personal Care Routines: Feeding' },
+    { value: 'PD-HLTH 8: Personal Care Routines: Dressing', label: 'PD-HLTH 8: Personal Care Routines: Dressing' },
   ];
 
   const developmentalLevels = [
-    {value: 'RE', label: 'Responding Earlier', isImportant: true},
-    {value: 'RL', label: 'Responding Later', isImportant: false},
-    {value: 'EE', label: 'Exploring Earlier', isImportant: false},
-    {value: 'EM', label: 'Exploring Middle', isImportant: false},
-    {value: 'EL', label: 'Exploring Later', isImportant: false},
-    {value: 'BE', label: 'Building Earlier', isImportant: false},
+    {value: 'Responding Earlier', label: 'Responding Earlier', isImportant: true},
+    {value: 'Responding Later', label: 'Responding Later', isImportant: false},
+    {value: 'Exploring Earlier', label: 'Exploring Earlier', isImportant: false},
+    {value: 'Exploring Middle', label: 'Exploring Middle', isImportant: false},
+    {value: 'Exploring Later', label: 'Exploring Later', isImportant: false},
+    {value: 'Building Earlier', label: 'Building Earlier', isImportant: false},
   ];
 
   const teachingStrats = [
@@ -78,10 +78,14 @@ function DataPage() {
   ];
 
   const resources = [
-    { value: 'FS', label: 'Frog Street' },
+    { value: 'Frog Street', label: 'Frog Street' },
+    { value: 'Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB', label: 'CSEFEL' },
+    { value: 'Attendanceworks.org', label: 'Attendanceworks.org' },
     { value: 'HSELOF', label: 'HSELOF' },
-    { value: 'ASQ', label: 'ASQ Activities' },
-    { value: 'ITERS', label: 'ITERS Materials' },
+    { value: 'National Center for Pyramid Model Innovations', label: 'National Center for Pyramid Model Innovations'},
+    { value: 'ITERS-3 Materials', label: 'ITERS-3 Materials'},
+    { value: 'ASQ Activities', label: 'ASQ Activities'},
+    { value: 'Frog Street Conscious Discipline', label: 'Frog Street Conscious Discipline'}
   ];
 
   // Functions:
@@ -129,7 +133,7 @@ function DataPage() {
 
       if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
         filteredData = filteredData.filter(row => {
-          const levels = row["** DRDP Developmental Level"].split(',').map(l => l.trim());
+          const levels = row["** DRDP Developmental Level "].split(',').map(l => l.trim());
           return selectedDevelopmentalLevel.some(level => levels.includes(level.value));
         });
       }
