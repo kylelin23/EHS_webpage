@@ -78,14 +78,13 @@ function DataPage() {
   ];
 
   const resources = [
-    { value: 'Frog Street', label: 'Frog Street' },
+    { value: 'Frog Street', label: 'Frog Street' }, // Add Frog Street Conscious Discipline
+    { value: 'HSELOF', label: 'HSELOF' },
+    { value: 'ASQ Activities', label: 'ASQ Activities'},
+    { value: 'ITERS-3 Materials', label: 'ITERS Materials'},
+    { value: 'National Center for Pyramid Model Innovations', label: 'Pyramid Model'},
     { value: 'Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB', label: 'CSEFEL' },
     { value: 'Attendanceworks.org', label: 'Attendanceworks.org' },
-    { value: 'HSELOF', label: 'HSELOF' },
-    { value: 'National Center for Pyramid Model Innovations', label: 'National Center for Pyramid Model Innovations'},
-    { value: 'ITERS-3 Materials', label: 'ITERS-3 Materials'},
-    { value: 'ASQ Activities', label: 'ASQ Activities'},
-    { value: 'Frog Street Conscious Discipline', label: 'Frog Street Conscious Discipline'}
   ];
 
   // Functions:
