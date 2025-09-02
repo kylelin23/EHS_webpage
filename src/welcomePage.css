@@ -1,9 +1,16 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: #fae8e0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
   background-color: #fae8e0;
+  min-height: 100%;
 }
 
 .header {
@@ -22,6 +29,7 @@ h1 {
 .body {
   height: 80vh;
   padding: 20px;
+  flex: 1;
 }
 
 /* center blob + button */
@@ -29,7 +37,7 @@ h1 {
 
 /* blob */
 .blob-outer { width: 45%; display: grid; place-items: left; }
-.blob-outer { translate: 10vw 0; } 
+.blob-outer { translate: 10vw 0; }
 .blob-outer { margin-block-start: 10vh; }
 .blob-card { position: relative; width: min(92%, 60vw); aspect-ratio: 5 / 4; filter: drop-shadow(0 2vw 4vw rgba(0,0,0,.12)); }
 .blob-svg { position: absolute; inset: 0; width: 100%; height: 100%; }

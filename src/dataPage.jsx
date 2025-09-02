@@ -45,7 +45,7 @@ function DataPage() {
     { value: 'COG1', label: 'COG 1: Spatial Relationships' },
     { value: 'COG2', label: 'COG 2: Classification' },
     { value: 'COG3', label: 'COG 3: Number Sense of Quantity' },
-    { value: 'COG8', label: 'COG 8: Cause and Effect' },
+    { value: 'COG 8: Cause and Effect', label: 'COG 8: Cause and Effect' },
     { value: 'COG9', label: 'COG 9: Inquiry Through Observation and Investigation' },
     { value: 'COG11', label: 'COG 11: Knowledge of the Natural World' },
 
@@ -104,7 +104,7 @@ function DataPage() {
 
   // Grab data from sampleData.csv
   useEffect(() => {
-      fetch('updatedSampleData.csv')
+      fetch('realData.csv')
         .then(response => response.text())
         .then(text => {
           const result = Papa.parse(text, { header: true }) // Put parsed data in result
@@ -129,14 +129,14 @@ function DataPage() {
 
       if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
         filteredData = filteredData.filter(row => {
-          const levels = row["DRDP Developmental Level"].split(',').map(l => l.trim());
+          const levels = row["** DRDP Developmental Level"].split(',').map(l => l.trim());
           return selectedDevelopmentalLevel.some(level => levels.includes(level.value));
         });
       }
 
       if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
         filteredData = filteredData.filter(row => {
-          const levels2 = row["Teaching Practice Category"].split(',').map(l => l.trim());
+          const levels2 = row["** Teaching Practice Category"].split(',').map(l => l.trim());
           return selectedTeachingStrats.some(level2 => levels2.includes(level2.value));
         });
       }
@@ -156,6 +156,8 @@ function DataPage() {
       <h1>Early Head Start's "DRDP Tool"</h1>
     </div>
 
+
+    <div className = "body">
 
 
       <div className="dropdowns">
@@ -195,16 +197,18 @@ function DataPage() {
         {filteredData.map((teachingPractice, index) => (
           <div key = {index}>
             <a href={teachingPractice["URL"]} className = "dataLink">
-              <u>{teachingPractice["Resource Variable"]} ({teachingPractice["Activity Title 1"]}): {teachingPractice["Age Range (if applicable)"]} months</u>
+              <u>{teachingPractice["** FS Domain (should be Cognitive, Language, Physical or Social Emotional)"]} ({teachingPractice["Activity Title"]}): {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months</u>
             </a>
             <div className = "dataText">
-              {teachingPractice["Activity Description 1 (Environments)"]}
+              {teachingPractice["Activity Description"]}
             </div>
           </div>
         ))}
       </div>
-
-      <button onClick = {navigateBack}>Back</button>
+        <div className = "backButtonContainer">
+          <button onClick = {navigateBack}>Back</button>
+        </div>
+    </div>
     </div>
 
 );

@@ -1,9 +1,11 @@
+
+
 .container {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
-  background-color: #fae8e0;
+  min-height: 100vh;
+  height: auto;
 }
 
 .header {
@@ -20,7 +22,7 @@ h1 {
 }
 
 .body {
-  height: 80vh;
+  min-height: 80vh;
   padding: 20px;
 }
 
@@ -41,5 +43,12 @@ h1 {
 
 .dataLink {
   color: blue;
-  
+
+}
+
+.backButtonContainer {
+  display: 'flex';
+  justify-content: 'center';
+  background-color: 'red';
+  width: 100vw;
 }
