@@ -17,7 +17,7 @@
 }
 
 h1 {
-  color: #fae8e0;
+  color: #ffffff;
 }
 
 .body {
@@ -26,14 +26,26 @@ h1 {
   flex: 1;
 }
 
+:root{
+  --blob-size: clamp(43rem, 30vw, 36rem);   /* ↓ make smaller/larger here */
+  --blob-font: clamp(0.95rem, 1.6vw, 1.2rem);
+}
+
 /* center blob + button */
 .hero { display: grid; gap: clamp(12px, 2.5vw, 24px); padding: clamp(16px, 3vw, 32px); }
 
 /* blob */
 .blob-outer { width: 45%; display: grid; place-items: left; }
-.blob-outer { translate: 10vw 0; }
+.blob-outer { translate: 0vw 0; }
 .blob-outer { margin-block-start: 10vh; }
-.blob-card { position: relative; width: min(92%, 60vw); aspect-ratio: 5 / 4; filter: drop-shadow(0 2vw 4vw rgba(0,0,0,.12)); }
+.blob-card { translate: 0 13vh; } 
+.blob-card {
+  position: relative;
+  width: var(--blob-size);     /* use your variable */
+  aspect-ratio: 5 / 4;
+  filter: drop-shadow(0 2vw 4vw rgba(0,0,0,.12));
+  font-size: var(--blob-font); /* scale text with blob */
+}
 .blob-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .blob-text {
   position: absolute;
@@ -42,10 +54,9 @@ h1 {
   place-items: center;
   text-align: center;
   color: #19333c;
-
   /* sensible, responsive values */
   padding: clamp(16px, 3.5vw, 40px);
-  font-size: clamp(1.2vw, 0.4vw, 0.2vw);
+  font-size: clamp(1.45vw, 0.4vw, 0.2vw);
   line-height: 1.3;      /* closer lines without overlap */
   font-weight: 600;
 }

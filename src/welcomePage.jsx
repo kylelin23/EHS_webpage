@@ -8,7 +8,7 @@ function WelcomePage() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Early Head Start's DRDP Tool</h1>
+        <h1>Early Head Start's Teaching Practices Tool</h1>
       </div>
 
       <div className="hero">
@@ -41,12 +41,10 @@ function WelcomePage() {
             </svg>
 
             <div className="blob-text">
-              <strong>Welcome teachers!<strong>
-              </strong>
-              Here is a tool you can use to find <strong> 
-                </strong>the desired teaching strategies<strong> 
-                </strong>
-              based on a child's developmental profile.</strong>
+              <p><strong>Welcome teachers!</strong><strong>Here is a tool that is aligned to </strong> 
+              <strong>DRDP 2015, allowing you to find </strong> <strong>desired teaching strategies</strong>
+              <strong>based on a child's</strong> 
+              <strong> developmental profile</strong></p>
             </div>
           </div>
         </div>
