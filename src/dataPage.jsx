@@ -318,32 +318,52 @@ function DataPage() {
         </div>
 
         <div className="dropdownContainer2">
-          <button onClick={developmentalLevelDropDown} className="dropdown">
+          <button onClick={developmentalLevelDropDown} className="box">
             Developmental Level {developmentalLevelOpen ? "▲" : "▼"}
           </button>
-          {developmentalLevelOpen &&
-            developmentalLevels.map((level, index) => (
-            <div className = "text" key={index}>{level}</div>
-          ))}
+          <div className = "developmentalLevelContainer">
+            {developmentalLevelOpen &&
+              developmentalLevels.map((level, index) => (
+              <div className = "textContainer" key={index}>
+                <div className = "text">
+                  {level}
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
 
         <div className="dropdownContainer2">
-          <button onClick={teachingStratDropDown} className="dropdown">
+          <button onClick={teachingStratDropDown} className="box">
             Teaching Strategy {teachingStratOpen ? "▲" : "▼"}
           </button>
-          {teachingStratOpen &&
-            teachingStrats.map((teachingStrat, index) => (
-            <div className = "text" key={index}>{teachingStrat}</div>
-          ))}
+          <div className = "developmentalLevelContainer">
+            {teachingStratOpen &&
+              teachingStrats.map((teachingStrat, index) => (
+              <div className = "textContainer" key={index}>
+                  <div className = "text">
+                    {teachingStrat}
+                  </div>
+              </div>
+            ))}
+          </div>
+
         </div>
 
         <div className="dropdownContainer2">
-          <button onClick={resourceDropDown} className="dropdown">
+          <button onClick={resourceDropDown} className="box">
             Resources {resourceOpen ? "▲" : "▼"}
           </button>
-          {resourceOpen && resources.map((resource, index) => (
-            <div className = "text" key={index}>{resource}</div>
-          ))}
+          <div className = "developmentalLevelContainer">
+            {resourceOpen && resources.map((resource, index) => (
+              <div className = "textContainer" key={index}>
+                  <div className = "text">
+                    {resource}
+                  </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
