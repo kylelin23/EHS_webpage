@@ -131,11 +131,12 @@ function DataPage() {
 
   const resources = [
     "Frog Street",
-    "CA Infant/Toddler Frameworks",
+    "ITERS-3 Materials",
     "ASQ Activities",
-    "ITERS Materials",
     "HSELOF",
-    "CDC"
+    "Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB",
+    "National Center for Pyramid Model Innovations",
+    "Attendanceworks.org"
   ]
 
   // const developmentalLevels = [
@@ -200,6 +201,10 @@ function DataPage() {
 
   const resourceDropDown = () => {
     setResourceOpen(!resourceOpen);
+  }
+
+  const resourceButton = (resource) => {
+    setSelectedResources(resource);
   }
 
   // Styling:
@@ -362,11 +367,14 @@ function DataPage() {
           </button>
           <div className = "developmentalLevelContainer">
             {resourceOpen && resources.map((resource, index) => (
-              <div className = "textContainer" key={index}>
+              <button className = "textContainer"
+              key={index}
+              onClick={() => setSelectedResources(resource)}
+              >
                   <div className = "text">
                     {resource}
                   </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
