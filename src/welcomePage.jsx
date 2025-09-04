@@ -48,11 +48,70 @@ function WelcomePage() {
             </div>
           </div>
         </div>
+   
+
+      <div className="hero2">
+        <div className="blob-outer2">
+          <div className="blob-card2">
+            <svg className="blob-svg2" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <defs>
+                <linearGradient id="blobGrad2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%"  stopColor="#f772e3" />
+                  <stop offset="100%" stopColor="#f5a1ff" />
+                </linearGradient>
+
+
+                <filter id="blobShadowBlur" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="8" />
+                </filter>
+
+          
+                <path id="calloutPath" d="
+                  M 90,330
+                  C  60,260  150,195 255,185
+                  C 360,175  470,150 550,145
+                  C 640,140  730,155 800,195
+                  C 860,230  870,280 840,320
+                  C 800,360  720,365 715,425
+                  C 720,505  840,525 790,565
+                  C 730,610  645,630 575,640
+                  C 500,650  445,635 405,605
+                  C 365,575  330,565 270,575
+                  C 205,585  155,565 125,528
+                  C  98,495  100,445 126,408
+                  C 150,376  110,350  90,330
+                  Z" />
+              </defs>
+
+              {/* shadow layers (behind) */}
+              <use href="#calloutPath" fill="#1f2630" opacity=".28"
+                  transform="translate(22 16) scale(0.985)"
+                  filter="url(#blobShadowBlur)" />
+              <use href="#calloutPath" fill="#1f2630" opacity=".15"
+                  transform="translate(10 8) scale(0.994)"
+                  filter="url(#blobShadowBlur)" />
+
+              {/* main pink blob (on top) */}
+              <use href="#calloutPath" fill="url(#blobGrad2)" />
+            </svg>
+
+
+
+            <div className="blob-text2">
+              <p><strong>Get started by clicking the button below!</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
 
   <button className="next-btn" onClick={navigateButton}>Next</button>
       </div>
     </div>
   );
 }
+
 
 export default WelcomePage;
