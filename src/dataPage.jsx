@@ -12,10 +12,10 @@ function DataPage() {
 
   const [data, setData] = useState([]);
 
-  const [selectedMeasure, setSelectedMeasure] = useState(null);
-  const [selectedDevelopmentalLevel, setSelectedDevelopmentalLevel] = useState(null);
-  const [selectedTeachingStrats, setSelectedTeachingStrats] = useState(null);
-  const [selectedResources, setSelectedResources] = useState(null);
+  const [selectedMeasure, setSelectedMeasure] = useState('COG 3: Number Sense of Quantity');
+  const [selectedDevelopmentalLevel, setSelectedDevelopmentalLevel] = useState([]);
+  const [selectedTeachingStrats, setSelectedTeachingStrats] = useState([]);
+  const [selectedResources, setSelectedResources] = useState('Frog Street');
 
   const [developmentalLevelOpen, setDevelopmentalLevelOpen] = useState(false);
   const [teachingStratOpen, setTeachingStratOpen] = useState(false);
@@ -237,25 +237,25 @@ function DataPage() {
       selectedResources
     ) {
       filteredData = selectedMeasure
-        ? data.filter(row => row["DRDP Measure"] === selectedMeasure.value)
+        ? data.filter(row => row["DRDP Measure"] === selectedMeasure)
         : data;
 
       if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
         filteredData = filteredData.filter(row => {
           const levels = row["** DRDP Developmental Level "].split(',').map(l => l.trim());
-          return selectedDevelopmentalLevel.some(level => levels.includes(level.value));
+          return selectedDevelopmentalLevel.some(level => levels.includes(level));
         });
       }
 
       if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
         filteredData = filteredData.filter(row => {
           const levels2 = row["** Teaching Practice Category"].split(',').map(l => l.trim());
-          return selectedTeachingStrats.some(level2 => levels2.includes(level2.value));
+          return selectedTeachingStrats.some(level2 => levels2.includes(level2));
         });
       }
 
       filteredData = selectedResources
-        ? filteredData.filter(row => row["Resource Agency"] === selectedResources.value)
+        ? filteredData.filter(row => row["Resource Agency"] === selectedResources)
         : filteredData;
     }
 
@@ -271,6 +271,11 @@ function DataPage() {
 
 
     <div className = "body">
+      <div className = "testingText">Measure: {selectedMeasure} </div>
+      <div className = "testingText">Developmental Level: {selectedDevelopmentalLevel} </div>
+      <div className = "testingText">Teaching Strategy: {selectedTeachingStrats} </div>
+      <div className = "testingText">Resource: {selectedResources} </div>
+
 
       <div className = "dropdown2">
         <div className="measureCategoryContainer">

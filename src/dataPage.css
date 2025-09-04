@@ -76,6 +76,8 @@ h1 {
   height: 200px;
   width: 300px;
   font-size: 25px;
+  background-color: black;
+  color: white
 }
 
 .measureCategoryContainer{
@@ -93,6 +95,8 @@ h1 {
   height: 200px;
   width: 300px;
   font-size: 23px;
+  background-color: black;
+  color: white;
 }
 
 .developmentalLevelContainer {
@@ -109,4 +113,8 @@ h1 {
   align-items: center;
   background-color: black;
   border-radius: 10px;
+}
+
+.testingText {
+  color: black
 }
