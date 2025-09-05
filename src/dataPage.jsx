@@ -1,7 +1,6 @@
 import './dataPage.css'
 import Papa from 'papaparse';
 import { useEffect, useState } from 'react'
-import Select from 'react-select';
 import { useNavigate } from "react-router-dom";
 
 function DataPage() {
@@ -203,8 +202,23 @@ function DataPage() {
     setResourceOpen(!resourceOpen);
   }
 
-  const resourceButton = (resource) => {
-    setSelectedResources(resource);
+  const handleDevelopmentalLevelButton = (level) => {
+    if (!(selectedDevelopmentalLevel.includes(level))){
+      if (selectedDevelopmentalLevel.length >= 2){ // If there are already two Developmental Levels
+        selectedDevelopmentalLevel.splice(0, 1);
+      }
+      setSelectedDevelopmentalLevel([...selectedDevelopmentalLevel, level])
+    }
+
+  }
+
+  const handleTeachingStratButton = (teachingStrat) => {
+    if (!(selectedTeachingStrats.includes(teachingStrat))){
+      if (selectedTeachingStrats.length >= 2){
+        selectedTeachingStrats.splice(0, 1);
+      }
+      setSelectedTeachingStrats([...selectedTeachingStrats, teachingStrat])
+    }
   }
 
   // Styling:
@@ -334,11 +348,14 @@ function DataPage() {
           <div className = "developmentalLevelContainer">
             {developmentalLevelOpen &&
               developmentalLevels.map((level, index) => (
-              <div className = "textContainer" key={index}>
+              <button className = "textContainer"
+              key={index}
+              onClick={() => handleDevelopmentalLevelButton(level)}
+              >
                 <div className = "text">
                   {level}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -351,11 +368,14 @@ function DataPage() {
           <div className = "developmentalLevelContainer">
             {teachingStratOpen &&
               teachingStrats.map((teachingStrat, index) => (
-              <div className = "textContainer" key={index}>
-                  <div className = "text">
-                    {teachingStrat}
-                  </div>
-              </div>
+              <button className = "textContainer"
+              key={index}
+              onClick={() => handleTeachingStratButton(teachingStrat)}
+              >
+                <div className = "text">
+                  {teachingStrat}
+                </div>
+              </button>
             ))}
           </div>
 
