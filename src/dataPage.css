@@ -68,8 +68,9 @@ h1 {
 }
 
 .text {
-  color: white;
+  color: black;
   text-align: center;
+  font-weight: bold;
 }
 
 .measureCategory {
@@ -83,7 +84,7 @@ h1 {
 .measureCategoryContainer{
   display: flex;
   justify-content: center;
-  gap: 10px;
+  /* gap: 10px; */
 }
 
 .measures {
@@ -101,20 +102,46 @@ h1 {
 
 .developmentalLevelContainer {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   margin-top: 10px;
 }
 
 .textContainer {
-  height: 100px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  border-radius: 10px;
+  border-radius: 25px;
 }
 
-.testingText {
-  color: black
+
+.bar {
+  background-color: #2a383f;
+  height: 80px;
+  width: 1500px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.developmentalLevelOuterContainer {
+  background-color: #97d4e8;
+  width: 1460px;
+  padding: 20px;
+}
+
+.teachingStratOuterContainer {
+  background-color: #6eabcc;
+  width: 1460px;
+  padding: 20px;
+}
+
+.resourcesOuterContainer {
+  background-color: #5c88a1;
+  width: 1460px;
+  padding: 20px;
 }

@@ -147,8 +147,9 @@ function DataPage() {
       if (selectedDevelopmentalLevel.length >= 2){ // If there are already two Developmental Levels
         selectedDevelopmentalLevel.splice(0, 1);
       }
-      setSelectedDevelopmentalLevel([...selectedDevelopmentalLevel, level])
+      setSelectedDevelopmentalLevel([...selectedDevelopmentalLevel, level]);
     }
+    setTeachingStratOpen(true);
   }
 
   const handleTeachingStratButton = (teachingStrat) => {
@@ -156,9 +157,11 @@ function DataPage() {
       if (selectedTeachingStrats.length >= 2){
         selectedTeachingStrats.splice(0, 1);
       }
-      setSelectedTeachingStrats([...selectedTeachingStrats, teachingStrat])
+      setSelectedTeachingStrats([...selectedTeachingStrats, teachingStrat]);
     }
+    setResourceOpen(true);
   }
+
 
   // Grab data from sampleData.csv
   useEffect(() => {
@@ -221,25 +224,31 @@ function DataPage() {
       <div className = "testingText">Teaching Strategy: {selectedTeachingStrats} </div>
       <div className = "testingText">Resource: {selectedResources} </div> */}
 
+      <div style = {{display: "flex", justifyContent: 'center'}}>
+        <div className = "bar">
+          DRDP Domains (Select One)
+        </div>
+      </div>
+
       <div className = "dropdown2">
         <div className="measureCategoryContainer">
-          <button onClick={atlDropDown} className = "measureCategory">
+          <button onClick={atlDropDown} className = "measureCategory" style = {{backgroundColor: '#3f80d4'}}>
                 Approaches to Learning {ATLOpen ? "▲" : "▼"}
               </button>
 
-              <button onClick={sedDropDown} className = "measureCategory">
+              <button onClick={sedDropDown} className = "measureCategory" style = {{backgroundColor: '#a1135f'}}>
                 Social and Emotional Development {SEDOpen ? "▲" : "▼"}
               </button>
 
-              <button onClick={lldDropDown} className = "measureCategory">
+              <button onClick={lldDropDown} className = "measureCategory" style = {{backgroundColor: '#fcba03'}}>
                 Language and Literacy {LLDOpen ? "▲" : "▼"}
               </button>
 
-              <button onClick={cogDropDown} className = "measureCategory">
+              <button onClick={cogDropDown} className = "measureCategory" style = {{backgroundColor: '#239947'}}>
                 Cognition {COGOpen ? "▲" : "▼"}
               </button>
 
-              <button onClick={phyDropDown} className = "measureCategory">
+              <button onClick={phyDropDown} className = "measureCategory" style = {{backgroundColor: '#e38120'}}>
                 Perceptual, Motor, and Physical Development {PHYOpen ? "▲" : "▼"}
               </button>
         </div>
@@ -247,132 +256,166 @@ function DataPage() {
           {ATLOpen &&
                 measures["Approaches to Learning"].map((m) => (
                   <button key={m} className = "measureStyle"
-                  onClick = {() => setSelectedMeasure(m)}
+                  onClick = {() => (
+                    setSelectedMeasure(m),
+                    setDevelopmentalLevelOpen(true)
+                )}
                   >{m}</button>
                 ))}
           {SEDOpen &&
                 measures["Social and Emotional Development"].map((m) => (
                   <button key={m} className = "measureStyle"
-                  onClick = {() => setSelectedMeasure(m)}
+                  onClick = {() => (
+                    setSelectedMeasure(m),
+                    setDevelopmentalLevelOpen(true)
+                  )}
                   >{m}</button>
                 ))}
           {LLDOpen &&
                 measures["Language and Literacy"].map((m) => (
                   <button key={m} className = "measureStyle"
-                  onClick = {() => setSelectedMeasure(m)}
+                  onClick = {() => (
+                    setSelectedMeasure(m),
+                    setDevelopmentalLevelOpen(true)
+                  )}
                   >{m}</button>
                 ))}
           {COGOpen &&
                 measures["Cognition"].map((m) => (
                 <button key={m} className = "measureStyle"
-                onClick = {() => setSelectedMeasure(m)}
+                onClick = {() => (
+                  setSelectedMeasure(m),
+                  setDevelopmentalLevelOpen(true)
+                )}
                 >{m}</button>
                 ))}
           {PHYOpen &&
                 measures["Perceptual, Motor, and Physical Development"].map((m) => (
                   <button key={m} className = "measureStyle"
-                  onClick = {() => setSelectedMeasure(m)}
+                  onClick = {() => (
+                    setSelectedMeasure(m),
+                    setDevelopmentalLevelOpen(true)
+                )}
                   >{m}</button>
                 ))}
         </div>
 
-        <div className="dropdownContainer2">
-          <div className = "developmentalLevelContainer">
-            {
-              developmentalLevels.map((level, index) => (
-              <button className = "textContainer"
-              key={index}
-              onClick={() => handleDevelopmentalLevelButton(level)}
-              >
-                <div className = "text">
-                  {level}
-                </div>
-              </button>
-            ))}
-          </div>
+        <div style = {{display: 'flex', justifyContent: 'center'}}>
 
-        </div>
-
-        <div className="dropdownContainer2">
-          <div className = "developmentalLevelContainer">
-            {
-              teachingStrats.map((teachingStrat, index) => (
-              <button className = "textContainer"
-              key={index}
-              onClick={() => handleTeachingStratButton(teachingStrat)}
-              >
-                <div className = "text">
-                  {teachingStrat}
-                </div>
-              </button>
-            ))}
-          </div>
-
-        </div>
-
-        <div className="dropdownContainer2">
-          <div className = "developmentalLevelContainer">
-            {
-              resources.map((resource, index) => (
-              <button className = "textContainer"
-              key={index}
-              onClick={() => setSelectedResources(resource)}
-              >
-                  <div className = "text">
-                    {resource}
-                  </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-{/*
-      <div className="dropdowns">
-        <Select
-          value = {selectedMeasure}
-          onChange={(selected) => setSelectedMeasure(selected)}
-          placeholder="Select DRDP Measure"
-          options = {measures}
-          className = "dropdownText"
-        />
-        <Select
-          value = {selectedDevelopmentalLevel}
-          onChange={(selected) => setSelectedDevelopmentalLevel(selected)}
-          placeholder="Select Developmental Level"
-          options = {developmentalLevels}
-          isMulti
-          styles = {customStyles}
-        />
-        <Select
-          value = {selectedTeachingStrats}
-          onChange={(selected) => setSelectedTeachingStrats(selected)}
-          placeholder="Select Teaching Strategy"
-          options = {teachingStrats}
-          isMulti
-          className = "dropdownText"
-        />
-        <Select
-          value = {selectedResources}
-          onChange={(selected) => setSelectedResources(selected)}
-          placeholder="Select Resources"
-          options = {resources}
-          className = "dropdownText"
-        />
-      </div> */}
-
-      <div className = "data">
-        {filteredData.map((teachingPractice, index) => (
-          <div key = {index}>
-            <a href={teachingPractice["URL"]} className = "dataLink">
-              <u>{teachingPractice["** FS Domain (should be Cognitive, Language, Physical or Social Emotional)"]} ({teachingPractice["Activity Title"]}): {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months</u>
-            </a>
-            <div className = "dataText">
-              {teachingPractice["Activity Description"]}
+        {developmentalLevelOpen &&
+        <div className="developmentalLevelOuterContainer">
+          <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div style = {{fontWeight: 'bold', fontSize: 30}}>
+              DRDP Developmental Levels
+            </div>
+            <div style = {{color: 'gray'}}>
+              (Select Multiple)
             </div>
           </div>
-        ))}
+
+          <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+
+            <div className = "developmentalLevelContainer">
+              {
+                developmentalLevels.map((level, index) => (
+                <button className = "textContainer"
+                key={index}
+                onClick={() => handleDevelopmentalLevelButton(level)}
+                >
+                  <div className = "text">
+                    {level}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+        </div>
+        }
+        </div>
+
+        <div style = {{display: 'flex', justifyContent: 'center'}}>
+          {teachingStratOpen &&
+
+          <div className="teachingStratOuterContainer">
+
+            <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div style = {{fontWeight: 'bold', fontSize: 30}}>
+              Teaching Practices
+            </div>
+            <div style = {{color: 'gray'}}>
+              (Select Multiple)
+            </div>
+          </div>
+            <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+           <div className = "developmentalLevelContainer">
+                {
+                  teachingStrats.map((teachingStrat, index) => (
+                  <button className = "textContainer"
+                  key={index}
+                  onClick={() => handleTeachingStratButton(teachingStrat)}
+                  >
+                    <div className = "text">
+                      {teachingStrat}
+                    </div>
+                  </button>
+                ))}
+              </div>
+              </div>
+              </div>
+
+            }
+        </div>
+            <div style = {{display: 'flex', justifyContent: 'center'}}>
+              {teachingStratOpen &&
+              <div className="resourcesOuterContainer">
+
+                <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <div style = {{fontWeight: 'bold', fontSize: 30}}>
+                  Resources
+                </div>
+              </div>
+              <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+
+              <div className="dropdownContainer2">
+                <div className = "developmentalLevelContainer">
+                  {
+                    resources.map((resource, index) => (
+                    <button className = "textContainer"
+                    key={index}
+                    onClick={() => setSelectedResources(resource)}
+                    >
+                        <div className = "text">
+                          {resource}
+                        </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              </div>
+              </div>
+              }
+            </div>
+
+
+
       </div>
+
+      {teachingStratOpen &&
+        <div className = "data">
+          {filteredData.map((teachingPractice, index) => (
+            <div key = {index}>
+              <a href={teachingPractice["URL"]} className = "dataLink">
+                <u>{teachingPractice["** FS Domain (should be Cognitive, Language, Physical or Social Emotional)"]} ({teachingPractice["Activity Title"]}): {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months</u>
+              </a>
+              <div className = "dataText">
+                {teachingPractice["Activity Description"]}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      }
         <div className = "backButtonContainer">
           <button onClick = {navigateBack}>Back</button>
         </div>
