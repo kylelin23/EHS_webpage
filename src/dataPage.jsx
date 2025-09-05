@@ -11,10 +11,10 @@ function DataPage() {
 
   const [data, setData] = useState([]);
 
-  const [selectedMeasure, setSelectedMeasure] = useState('COG 3: Number Sense of Quantity');
+  const [selectedMeasure, setSelectedMeasure] = useState('');
   const [selectedDevelopmentalLevel, setSelectedDevelopmentalLevel] = useState([]);
   const [selectedTeachingStrats, setSelectedTeachingStrats] = useState([]);
-  const [selectedResources, setSelectedResources] = useState('Frog Street');
+  const [selectedResources, setSelectedResources] = useState('');
 
   const [developmentalLevelOpen, setDevelopmentalLevelOpen] = useState(false);
   const [teachingStratOpen, setTeachingStratOpen] = useState(false);
@@ -85,8 +85,8 @@ function DataPage() {
       "SED 5: Symbolic and Sociodramatic Play"
     ],
     "Language and Literacy": [
-      "LLD1: Understanding of Language (Receptive)",
-      "LLD2: Responsiveness to Language",
+      "LLD 1: Understanding of Language (Receptive)",
+      "LLD 2: Responsiveness to Language",
       "LLD 3: Communication and Use of Language (Expressive)",
       "LLD 4: Reciprocal Communication and Conversation",
       "LLD 5: Interest in Literacy"
@@ -321,32 +321,39 @@ function DataPage() {
         <div className = "measures">
           {ATLOpen &&
                 measures["Approaches to Learning"].map((m) => (
-                  <button key={m} className = "measureStyle">{m}</button>
+                  <button key={m} className = "measureStyle"
+                  onClick = {() => setSelectedMeasure(m)}
+                  >{m}</button>
                 ))}
           {SEDOpen &&
                 measures["Social and Emotional Development"].map((m) => (
-                  <button key={m} className = "measureStyle">{m}</button>
+                  <button key={m} className = "measureStyle"
+                  onClick = {() => setSelectedMeasure(m)}
+                  >{m}</button>
                 ))}
           {LLDOpen &&
                 measures["Language and Literacy"].map((m) => (
-                  <button key={m} className = "measureStyle">{m}</button>
+                  <button key={m} className = "measureStyle"
+                  onClick = {() => setSelectedMeasure(m)}
+                  >{m}</button>
                 ))}
           {COGOpen &&
                 measures["Cognition"].map((m) => (
-                <button key={m} className = "measureStyle">{m}</button>
+                <button key={m} className = "measureStyle"
+                onClick = {() => setSelectedMeasure(m)}
+                >{m}</button>
                 ))}
           {PHYOpen &&
                 measures["Perceptual, Motor, and Physical Development"].map((m) => (
-                  <button key={m} className = "measureStyle">{m}</button>
+                  <button key={m} className = "measureStyle"
+                  onClick = {() => setSelectedMeasure(m)}
+                  >{m}</button>
                 ))}
         </div>
 
         <div className="dropdownContainer2">
-          <button onClick={developmentalLevelDropDown} className="box">
-            Developmental Level {developmentalLevelOpen ? "▲" : "▼"}
-          </button>
           <div className = "developmentalLevelContainer">
-            {developmentalLevelOpen &&
+            {
               developmentalLevels.map((level, index) => (
               <button className = "textContainer"
               key={index}
@@ -362,11 +369,8 @@ function DataPage() {
         </div>
 
         <div className="dropdownContainer2">
-          <button onClick={teachingStratDropDown} className="box">
-            Teaching Strategy {teachingStratOpen ? "▲" : "▼"}
-          </button>
           <div className = "developmentalLevelContainer">
-            {teachingStratOpen &&
+            {
               teachingStrats.map((teachingStrat, index) => (
               <button className = "textContainer"
               key={index}
@@ -382,11 +386,9 @@ function DataPage() {
         </div>
 
         <div className="dropdownContainer2">
-          <button onClick={resourceDropDown} className="box">
-            Resources {resourceOpen ? "▲" : "▼"}
-          </button>
           <div className = "developmentalLevelContainer">
-            {resourceOpen && resources.map((resource, index) => (
+            {
+              resources.map((resource, index) => (
               <button className = "textContainer"
               key={index}
               onClick={() => setSelectedResources(resource)}
