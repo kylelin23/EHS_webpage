@@ -83,23 +83,24 @@ function WelcomePage() {
                   Z" />
               </defs>
 
-              {/* shadow layers (behind) */}
-              <use href="#calloutPath" fill="#1f2630" opacity=".28"
-                  transform="translate(22 16) scale(0.985)"
-                  filter="url(#blobShadowBlur)" />
-              <use href="#calloutPath" fill="#1f2630" opacity=".15"
-                  transform="translate(10 8) scale(0.994)"
-                  filter="url(#blobShadowBlur)" />
+              
+                {/* shadow layers (behind) */}
+                <use href="#calloutPath" fill="#1f2630" opacity=".28"
+                    transform="translate(22 16) scale(0.985)"
+                    filter="url(#blobShadowBlur)" />
+                <use href="#calloutPath" fill="#1f2630" opacity=".15"
+                    transform="translate(10 8) scale(0.994)"
+                    filter="url(#blobShadowBlur)" />
 
-              {/* main pink blob (on top) */}
-              <use href="#calloutPath" fill="url(#blobGrad2)" />
+                {/* main pink blob (on top) */}
+                <use href="#calloutPath" fill="url(#blobGrad2)" />
+              
             </svg>
 
-
-
             <div className="blob-text2">
-              <p><strong>Get started by clicking the button below!</strong></p>
+              <strong>Welcome Teachers!</strong>
             </div>
+
           </div>
         </div>
       </div>
@@ -110,6 +111,8 @@ function WelcomePage() {
   <button className="next-btn" onClick={navigateButton}>Next</button>
       </div>
     </div>
+
+  
   );
 }
 
