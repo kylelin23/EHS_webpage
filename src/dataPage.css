@@ -43,15 +43,15 @@ h1 {
 
 .dataLink {
   color: blue;
+  font-weight: bold;
 
 }
 
-.backButtonContainer {
-  display: 'flex';
-  justify-content: 'center';
-  background-color: 'red';
-  width: 100vw;
+.feedbackContainer {
   margin-top: 50px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
 
 .dropdownContainer2 {
@@ -136,6 +136,18 @@ h1 {
   font-weight: bold;
 }
 
+.bar2 {
+  background-color: #2a383f;
+  height: 80px;
+  width: 90vw;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
 .developmentalLevelOuterContainer {
   background-color: #97d4e8;
   width: 1460px;
@@ -159,4 +171,22 @@ h1 {
 
 .testingText {
   color: black
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 30px;
+
+}
+
+.teachingStrategy {
+  width: 90vw;
+  border-width: 3px;
+  border-color: black;
+  border-style: solid;
+  background-color: #aadcf0;
+  padding: 10px;
 }

@@ -404,10 +404,17 @@ function DataPage() {
 
       </div>
 
+
       {teachingStratOpen &&
+
         <div className = "data">
+          <div style = {{display: "flex", justifyContent: 'center'}}>
+            <div className = "bar2">
+              Planned Learning Activities
+            </div>
+          </div>
           {filteredData.map((teachingPractice, index) => (
-            <div key = {index}>
+            <div className = "teachingStrategy" key = {index}>
               <a href={teachingPractice["URL"]} className = "dataLink">
                 <u>{teachingPractice["** FS Domain (should be Cognitive, Language, Physical or Social Emotional)"]} ({teachingPractice["Activity Title"]}): {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months</u>
               </a>
@@ -419,8 +426,11 @@ function DataPage() {
         </div>
 
       }
-        <div className = "backButtonContainer">
-          <button onClick = {navigateBack}>Back</button>
+
+
+
+        <div className = "feedbackContainer">
+          <div style = {{color: 'gray'}}>If you have questions or feedback please fill out this Service Request Form</div>
         </div>
     </div>
     </div>
