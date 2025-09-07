@@ -308,10 +308,10 @@ function DataPage() {
         {developmentalLevelOpen &&
         <div className="developmentalLevelOuterContainer">
           <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <div style = {{fontWeight: 'bold', fontSize: 30}}>
+            <div className = "titleText">
               DRDP Developmental Levels
             </div>
-            <div style = {{color: 'gray'}}>
+            <div className = "smallText" style = {{color: 'gray'}}>
               (Select Multiple)
             </div>
           </div>
@@ -351,10 +351,10 @@ function DataPage() {
           <div className="teachingStratOuterContainer">
 
             <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <div style = {{fontWeight: 'bold', fontSize: 30}}>
+            <div className = "titleText">
               Teaching Practices
             </div>
-            <div style = {{color: 'gray'}}>
+            <div className = "smallText" style = {{color: 'gray'}}>
               (Select Multiple)
             </div>
           </div>
@@ -390,7 +390,7 @@ function DataPage() {
               <div className="resourcesOuterContainer">
 
                 <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <div style = {{fontWeight: 'bold', fontSize: 30}}>
+                <div className = "titleText">
                   Resources
                 </div>
               </div>
@@ -456,7 +456,7 @@ function DataPage() {
 
 
         <div className = "feedbackContainer">
-          <div style = {{color: 'gray'}}>If you have questions or feedback please fill out this Service Request Form</div>
+          <div className = "smallText" style = {{color: 'gray'}}>If you have questions or feedback please fill out this Service Request Form</div>
         </div>
     </div>
     </div>

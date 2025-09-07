@@ -39,11 +39,13 @@ h1 {
 
 .dataText {
   color: black;
+  font-size: 1vw;
 }
 
 .dataLink {
   color: blue;
   font-weight: bold;
+  font-size: 1vw;
 
 }
 
@@ -71,12 +73,13 @@ h1 {
   color: black;
   text-align: center;
   font-weight: bold;
+  font-size: 1vw;
 }
 
 .measureCategory {
   height: 12vw;
   width: 18vw;
-  font-size: 25px;
+  font-size: 1.5vw;
   background-color: black;
   color: white
 }
@@ -106,8 +109,8 @@ h1 {
 }
 
 .textContainer {
-  height: 170px;
-  width: 170px;
+  height: 20vh;
+  width: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -198,25 +201,25 @@ h1 {
 
 .bar {
   background-color: #2a383f;
-  height: 80px;
+  height: 7vw;
   width: 90vw;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 2vw;
   font-weight: bold;
 }
 
 .bar2 {
   background-color: #2a383f;
-  height: 80px;
+  height: 7vw;
   width: 90vw;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 2vw;
   font-weight: bold;
 }
 
@@ -261,4 +264,13 @@ h1 {
   border-style: solid;
   background-color: #aadcf0;
   padding: 10px;
+}
+
+.titleText {
+  font-weight: bold;
+  font-size: 2vw;
+}
+
+.smallText {
+  font-size: 1vw
 }
