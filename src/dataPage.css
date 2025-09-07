@@ -107,16 +107,20 @@ h1 {
 }
 
 .textContainer {
-  height: 150px;
-  width: 150px;
+  height: 170px;
+  width: 170px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 25px;
+  background-color: white;
+  border-width: 10px;
 }
 
 .textContainer.selected {
-  background-color: black;
+  border-width: 10px;
+  border-color: black;
+
 }
 
 
@@ -151,5 +155,8 @@ h1 {
 }
 
 .text.selected {
-  color: white
+}
+
+.testingText {
+  color: black
 }

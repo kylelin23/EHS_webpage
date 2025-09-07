@@ -218,7 +218,7 @@ function DataPage() {
 
 
     <div className = "body">
-      {/*
+{/*
       <div className = "testingText">Measure: {selectedMeasure} </div>
       <div className = "testingText">Developmental Level: {selectedDevelopmentalLevel} </div>
       <div className = "testingText">Teaching Strategy: {selectedTeachingStrats} </div>
@@ -381,11 +381,11 @@ function DataPage() {
                 <div className = "developmentalLevelContainer">
                   {
                     resources.map((resource, index) => (
-                    <button className = {`textContainer ${selectedResources.includes(resource) ? "selected": ""}`}
+                    <button className = {`textContainer ${selectedResources.includes(resource) ? "selected" : ""}`}
                     key={index}
                     onClick={() => setSelectedResources(resource)}
                     >
-                        <div className = {`text ${selectedResources.includes(resource) ? "selected": ""}`}>
+                        <div className = {`text ${selectedResources.includes(resource) ? "selected" : ""}`}>
                           {resource}
                         </div>
                     </button>
