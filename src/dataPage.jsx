@@ -221,11 +221,11 @@ function DataPage() {
 
 
     <div className = "body">
-
+{/*
       <div className = "testingText">Measure: {selectedMeasure} </div>
       <div className = "testingText">Developmental Level: {selectedDevelopmentalLevel} </div>
       <div className = "testingText">Teaching Strategy: {selectedTeachingStrats} </div>
-      <div className = "testingText">Resource: {selectedResources} </div>
+      <div className = "testingText">Resource: {selectedResources} </div> */}
 
       <div style = {{display: "flex", justifyContent: 'center'}}>
         <div className = "bar">

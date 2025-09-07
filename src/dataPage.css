@@ -74,8 +74,8 @@ h1 {
 }
 
 .measureCategory {
-  height: 200px;
-  width: 300px;
+  height: 12vw;
+  width: 18vw;
   font-size: 25px;
   background-color: black;
   color: white
@@ -199,7 +199,7 @@ h1 {
 .bar {
   background-color: #2a383f;
   height: 80px;
-  width: 1500px;
+  width: 90vw;
   color: white;
   display: flex;
   justify-content: center;
@@ -222,19 +222,19 @@ h1 {
 
 .developmentalLevelOuterContainer {
   background-color: #97d4e8;
-  width: 1460px;
+  width: 90vw;
   padding: 20px;
 }
 
 .teachingStratOuterContainer {
   background-color: #6eabcc;
-  width: 1460px;
+  width: 90vw;
   padding: 20px;
 }
 
 .resourcesOuterContainer {
   background-color: #5c88a1;
-  width: 1460px;
+  width: 90vw;
   padding: 20px;
 }
 
