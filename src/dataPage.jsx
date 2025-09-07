@@ -256,51 +256,83 @@ function DataPage() {
               </button>
         </div>
         <div className = "measures">
+          <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {ATLOpen &&
                 measures["Approaches to Learning"].map((m) => (
-                  <button key={m} className = "measureStyle"
+                  <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
                     setSelectedMeasure(m),
                     setDevelopmentalLevelOpen(true)
                 )}
-                  >{m}</button>
+                  >
+                    <div className = "text">
+                      {m}
+                    </div>
+                  </button>
                 ))}
+          </div>
+          <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {SEDOpen &&
                 measures["Social and Emotional Development"].map((m) => (
-                  <button key={m} className = "measureStyle"
+                  <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
                     setSelectedMeasure(m),
                     setDevelopmentalLevelOpen(true)
                   )}
-                  >{m}</button>
+                  >
+                    <div className = "text">
+                      {m}
+                    </div>
+                  </button>
                 ))}
+            </div>
+
+          <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {LLDOpen &&
                 measures["Language and Literacy"].map((m) => (
-                  <button key={m} className = "measureStyle"
+                  <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
                     setSelectedMeasure(m),
                     setDevelopmentalLevelOpen(true)
                   )}
-                  >{m}</button>
+                  >
+                    <div className = "text">
+                      {m}
+                    </div>
+                  </button>
                 ))}
+          </div>
+
+          <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {COGOpen &&
                 measures["Cognition"].map((m) => (
-                <button key={m} className = "measureStyle"
+                <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                 onClick = {() => (
                   setSelectedMeasure(m),
                   setDevelopmentalLevelOpen(true)
                 )}
-                >{m}</button>
+                >
+                  <div className = "text">
+                      {m}
+                    </div>
+                </button>
                 ))}
+          </div>
+          <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {PHYOpen &&
                 measures["Perceptual, Motor, and Physical Development"].map((m) => (
-                  <button key={m} className = "measureStyle"
+                  <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
                     setSelectedMeasure(m),
                     setDevelopmentalLevelOpen(true)
                 )}
-                  >{m}</button>
+                  >
+                    <div className = "text">
+                      {m}
+                    </div>
+                  </button>
                 ))}
+          </div>
         </div>
 
         <div style = {{display: 'flex', justifyContent: 'center'}}>
