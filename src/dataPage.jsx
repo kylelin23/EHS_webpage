@@ -321,7 +321,15 @@ function DataPage() {
             <div className = "developmentalLevelContainer">
               {
                 developmentalLevels.map((level, index) => (
-                <button className = {`textContainer ${selectedDevelopmentalLevel.includes(level) ? "selected" : ""}`}
+                <button className = {`textContainer
+                  ${selectedDevelopmentalLevel.includes(level) ? "selected" : ""}
+                  ${level == 'Responding Earlier' ? "respondingEarlier" : ""}
+                  ${level == 'Responding Later' ? "respondingLater" : ""}
+                  ${level == 'Exploring Earlier' ? "exploringEarlier" : ""}
+                  ${level == 'Exploring Middle' ? "exploringMiddle" : ""}
+                  ${level == 'Exploring Later' ? "exploringLater" : ""}
+                  ${level == 'Building Earlier' ? "buildingEarlier" : ""}
+                  }`}
                 key={index}
                 onClick={() => handleDevelopmentalLevelButton(level)}
                 >
@@ -354,7 +362,15 @@ function DataPage() {
            <div className = "developmentalLevelContainer">
                 {
                   teachingStrats.map((teachingStrat, index) => (
-                  <button className = {`textContainer ${selectedTeachingStrats.includes(teachingStrat) ? "selected" : ""}`}
+                  <button className = {`textContainer
+                    ${selectedTeachingStrats.includes(teachingStrat) ? "selected" : ""}
+                    ${teachingStrat == 'Planned Learning Activity' ? "plannedLearningActivity" : ""}
+                    ${teachingStrat == 'Interactions/Teaching Strategies' ? "interactions" : ""}
+                    ${teachingStrat == 'Learning Environment and Materials' ? "learningEnv" : ""}
+                    ${teachingStrat == 'Family Engagement' ? "fam" : ""}
+                    ${teachingStrat == 'Professional Growth and Development' ? "proGrowth" : ""}
+
+                    `}
                   key={index}
                   onClick={() => handleTeachingStratButton(teachingStrat)}
                   >
@@ -384,11 +400,21 @@ function DataPage() {
                 <div className = "developmentalLevelContainer">
                   {
                     resources.map((resource, index) => (
-                    <button className = {`textContainer ${selectedResources.includes(resource) ? "selected" : ""}`}
+                    <button className = {`textContainer
+                      ${selectedResources.includes(resource) ? "selected" : ""}
+                      ${resource == 'Frog Street' ? "frogStreet" : ""}
+                      ${resource == 'ITERS-3 Materials' ? "iters" : ""}
+                      ${resource == 'ASQ Activities' ? "asq" : ""}
+                      ${resource == 'HSELOF' ? "hselof" : ""}
+                      ${resource == 'Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB' ? "center" : ""}
+                      ${resource == 'National Center for Pyramid Model Innovations' ? "pyramid" : ""}
+                      ${resource == 'Attendanceworks.org' ? "attendance" : ""}
+                      `}
                     key={index}
                     onClick={() => setSelectedResources(resource)}
                     >
-                        <div className = {`text ${selectedResources.includes(resource) ? "selected" : ""}`}>
+                        <div className = {`text
+                          ${selectedResources.includes(resource) ? "selected" : ""}`}>
                           {resource}
                         </div>
                     </button>

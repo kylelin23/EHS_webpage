@@ -84,7 +84,6 @@ h1 {
 .measureCategoryContainer{
   display: flex;
   justify-content: center;
-  /* gap: 10px; */
 }
 
 .measures {
@@ -122,6 +121,79 @@ h1 {
   border-color: black;
 
 }
+
+.textContainer.respondingEarlier {
+  background-color: #edcda4;
+}
+
+.textContainer.respondingLater {
+  background-color: #f2c385;
+}
+
+.textContainer.exploringEarlier {
+  background-color: #c4d6bc;
+}
+
+.textContainer.exploringMiddle {
+  background-color: #a4bd99;
+}
+
+.textContainer.exploringLater {
+  background-color: #89ad79;
+}
+
+.textContainer.buildingEarlier {
+  background-color: #e2d5e3;
+}
+
+.textContainer.plannedLearningActivity {
+  background-color: #e86661;
+}
+
+.textContainer.interactions {
+  background-color: #f59536;
+}
+
+.textContainer.learningEnv {
+  background-color: #e0db38;
+}
+
+.textContainer.fam {
+  background-color: #79e888;
+}
+
+.textContainer.proGrowth {
+  background-color: #7fc7c9;
+}
+
+.textContainer.frogStreet {
+  background-color: #46e87c;
+}
+
+.textContainer.iters {
+  background-color: #e3e663;
+}
+
+.textContainer.asq {
+  background-color: #af5bf0;
+}
+
+.textContainer.hselof {
+  background-color: #e197e8;
+}
+
+.textContainer.center {
+  background-color: #d1387b;
+}
+
+.textContainer.pyramid {
+  background-color: #f7be54;
+}
+
+.textContainer.attendance {
+  background-color: #89c6f0;
+}
+
 
 
 .bar {
