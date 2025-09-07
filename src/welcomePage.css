@@ -1,14 +1,18 @@
 :root{
   /* one knob for blob 1 size + text */
-  --blob-size: clamp(20rem, 30vw, 36rem);
+  --blob-size: clamp(30rem, 100vw, 45rem);
   --blob-font: clamp(0.95rem, 1.6vw, 1.2rem);
+  --blob2-w: clamp(18rem, 36vw, 39rem);
 
   /* position knobs (avoid stacking random translates/margins) */
   --blob1-x: 52vw;
-  --blob1-y: -2vh;
+  --blob1-y: -1vh;
 
-  --blob2-x: 0vw;
-  --blob2-y: -20vh;
+  --blob2-x: 13vw;
+  --blob2-y: -68vh;
+
+  --photo-blob-x: -28vw;
+  --photo-blob-y: -86vh;
 }
 
 /* page chrome */
@@ -41,7 +45,7 @@ h1 { color:#ffffff; }
   position:absolute; inset:0;
   display:grid; place-items:center; text-align:center; color:#19333c;
   padding: clamp(1rem, 3.5vw, 2.5rem);
-  font-size: 1em;             /* follows .blob-card */
+  font-size: 1.4em;             /* follows .blob-card */
   line-height: 1.3; font-weight:600;
 }
 .blob-text strong{ display:block; margin-block-end:.3em; font-weight:700; }
@@ -69,7 +73,27 @@ h1 { color:#ffffff; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0;                              /* don't offset the center */
+  padding: 0;
+  font-size: 2em;                             /* don't offset the center */
+}
+.blob-card2{
+  position: relative;
+  width: var(--blob2-w);
+  aspect-ratio: 16 / 11;
+}
+
+/* Size & position of the photo blob (responsive, no px) */
+.photo-blob{
+  width: clamp(20rem, 40vw, 40rem);   /* ← make the blob larger/smaller */
+  margin-inline: auto;                /* center horizontally */
+  margin-block: clamp(1rem, 6vh, 4rem);
+}
+.photo-blob > svg{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0; /* keep SVG crisp */
+  translate: var(--photo-blob-x) var(--photo-blob-y);
 }
 
 

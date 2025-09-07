@@ -41,10 +41,10 @@ function WelcomePage() {
             </svg>
 
             <div className="blob-text">
-              <p><strong>Welcome teachers!</strong><strong>Here is a tool that is aligned to </strong> 
-              <strong>DRDP 2015, allowing you to find </strong> <strong>desired teaching strategies</strong>
+              <p><strong>This tool, aligned to DRDP</strong><strong>2015, will allow you to select </strong> 
+              <strong>filters to find desired</strong> <strong>teaching strategies based on </strong>
               <strong>based on a child's</strong> 
-              <strong> developmental profile</strong></p>
+              <strong> a child's developmental profile</strong></p>
             </div>
           </div>
         </div>
@@ -105,6 +105,48 @@ function WelcomePage() {
         </div>
       </div>
 
+      <div className="photo-blob">
+        <svg viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            
+            <clipPath id="bubbleClip">
+              <path id="bubblePath" d="
+                M 125,280
+                C 170,215 340,165 540,155       
+                C 705,148 830,205 865,285       
+                C 880,320 860,360 815,395        
+                C 770,430 760,470 775,505        
+                C 735,575 600,610 490,620      
+                C 390,630 300,610 315,590   
+                C 250,573 205,548 190,520     
+                C 175,495 180,465 195,435      
+                C 210,405 185,385 160,365        
+                C 135,345 120,320 125,280       
+                Z" />
+            </clipPath>
+
+        
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/>
+              <feOffset in="b" dx="10" dy="10" result="o"/>
+              <feColorMatrix in="o" type="matrix"
+                values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 .25 0" result="s"/>
+              <feMerge>
+                <feMergeNode in="s"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <image
+            href="/images/your-photo.jpg"
+            width="100%" height="100%"
+            preserveAspectRatio="xMidYMid slice"
+            clip-path="url(#bubbleClip)"
+            filter="url(#softShadow)" />
+        </svg>
+
+      </div>
 
 
 
