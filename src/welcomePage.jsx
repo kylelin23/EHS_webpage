@@ -108,29 +108,41 @@ function WelcomePage() {
       <div className="photo-blob">
         <svg viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <defs>
+            {/* define the path once */}
+            <path id="bubblePath" d="
+              M 200,400
+
+              
+              C 140,245 235,135 360,120
+
+              C 460,120 420,140 520,105
+              C 620,70 760,135 845,280
+
+              
+              C 880,370 822,455 810,470
+           
+              C 740,585 610,525 490,510
+              C 370,495 295,562 310,550
+
+             
+              C 210,607 185,585 178,545
+              C 170,505 180,465 200,435
+
+              C 225,600 195,575 185,545
+              C 175,470 185,470 200,410
+              
             
+              Z" />
+
             <clipPath id="bubbleClip">
-              <path id="bubblePath" d="
-                M 125,280
-                C 170,215 340,165 540,155       
-                C 705,148 830,205 865,285       
-                C 880,320 860,360 815,395        
-                C 770,430 760,470 775,505        
-                C 735,575 600,610 490,620      
-                C 390,630 300,610 315,590   
-                C 250,573 205,548 190,520     
-                C 175,495 180,465 195,435      
-                C 210,405 185,385 160,365        
-                C 135,345 120,320 125,280       
-                Z" />
+              <use href="#bubblePath" />
             </clipPath>
 
-        
             <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/>
               <feOffset in="b" dx="10" dy="10" result="o"/>
-              <feColorMatrix in="o" type="matrix"
-                values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 .25 0" result="s"/>
+              <feColorMatrix in="o" type="matrix" values="
+                0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 .25 0" result="s"/>
               <feMerge>
                 <feMergeNode in="s"/>
                 <feMergeNode in="SourceGraphic"/>
@@ -138,15 +150,24 @@ function WelcomePage() {
             </filter>
           </defs>
 
+          {/* solid color placeholder */}
+          <rect width="100%" height="100%"
+                fill="#011021" /* or use fillOpacity for alpha */
+                clipPath="url(#bubbleClip)"
+                filter="url(#softShadow)" />
+
+          {/* keep for later: swap this in when you have a photo */}
+          {/*
           <image
-            href="/images/your-photo.jpg"
+            href="/images/your-photo.jpg"  // or xlinkHref
             width="100%" height="100%"
             preserveAspectRatio="xMidYMid slice"
-            clip-path="url(#bubbleClip)"
+            clipPath="url(#bubbleClip)"
             filter="url(#softShadow)" />
+          */}
         </svg>
-
       </div>
+
 
 
 
