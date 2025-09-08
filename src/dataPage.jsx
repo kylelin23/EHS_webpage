@@ -346,8 +346,8 @@ function DataPage() {
             <div className = "titleText">
               DRDP Developmental Levels
             </div>
-            <div className = "smallText" style = {{color: 'gray'}}>
-              (Select Multiple)
+            <div className = "smallText" style = {{color: 'black'}}>
+              (Select Up To Two)
             </div>
           </div>
 
@@ -389,8 +389,8 @@ function DataPage() {
             <div className = "titleText">
               Teaching Practices
             </div>
-            <div className = "smallText" style = {{color: 'gray'}}>
-              (Select Multiple)
+            <div className = "smallText" style = {{color: 'black'}}>
+              (Select Up To Two)
             </div>
           </div>
             <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
