@@ -22,9 +22,9 @@
 
 /* page chrome */
 .container { display:flex; flex-direction:column; width:100vw; min-height:100%; background:#fae8e0; }
-.header { background:#2a383f; height:10vw; display:flex; align-items:center; justify-content:center; width:100%; }
+.header { background:#2a383f; height:10vw; display:flex; align-items:center; justify-content:center; width:100%; padding-top: 3vw; padding-bottom: 3vw;}
 h1 { color:#ffffff;}
-.headerText {color: white; font-size: 2.5vw; font-weight: bold; text-align: center;}
+.headerText {color: white; font-size: 2.5vw; font-weight: bold; text-align: center; width: 50vw;}
 .body { min-height:80vh; padding: 2rem; flex:1; }
 
 .hero { display:grid; gap: clamp(0.75rem, 2.5vw, 1.5rem); padding: clamp(1rem, 3vw, 2rem); }
