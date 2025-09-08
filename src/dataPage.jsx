@@ -139,7 +139,7 @@ function DataPage() {
     setATLOpen(false);
     setLLDOpen(false);
     setCOGOpen(false);
-    setCOGOpen(false);
+    setSEDOpen(false);
   }
 
   const handleDevelopmentalLevelButton = (level) => {
@@ -161,6 +161,9 @@ function DataPage() {
         selectedTeachingStrats.splice(0, 1);
       }
       setSelectedTeachingStrats([...selectedTeachingStrats, teachingStrat]);
+    }
+    else{
+      setSelectedTeachingStrats(selectedTeachingStrats.filter(item => item !== teachingStrat));
     }
     setResourceOpen(true);
   }
