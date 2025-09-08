@@ -84,6 +84,11 @@ h1 {
   color: white
 }
 
+.measureCategory.selected {
+  border-color: black;
+  border-width: 0.5vw;
+}
+
 .measureCategoryContainer{
   display: flex;
   justify-content: center;
@@ -149,7 +154,7 @@ h1 {
   background-color: #e2d5e3;
 }
 
-.textContainer.plannedLearningActivity {
+/* .textContainer.plannedLearningActivity {
   background-color: #e86661;
 }
 
@@ -167,7 +172,7 @@ h1 {
 
 .textContainer.proGrowth {
   background-color: #7fc7c9;
-}
+} */
 
 .textContainer.frogStreet {
   background-color: #46e87c;
@@ -245,7 +250,9 @@ h1 {
 }
 
 .testingText {
-  color: black
+  color: black;
+  font-weight: bold;
+  width: 90vw;
 }
 
 .data {
@@ -269,6 +276,7 @@ h1 {
 .titleText {
   font-weight: bold;
   font-size: 2vw;
+  color: white;
 }
 
 .smallText {

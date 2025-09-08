@@ -19,7 +19,7 @@
 .container { display:flex; flex-direction:column; width:100vw; min-height:100%; background:#fae8e0; }
 .header { background:#2a383f; height:10vw; display:flex; align-items:center; justify-content:center; width:100%; }
 h1 { color:#ffffff;}
-.headerText {color: white; font-size: 3vw; font-weight: bold}
+.headerText {color: white; font-size: 2.5vw; font-weight: bold; text-align: center;}
 .body { min-height:80vh; padding: 2rem; flex:1; }
 
 .hero { display:grid; gap: clamp(0.75rem, 2.5vw, 1.5rem); padding: clamp(1rem, 3vw, 2rem); }

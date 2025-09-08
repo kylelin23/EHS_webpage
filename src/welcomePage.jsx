@@ -8,7 +8,7 @@ function WelcomePage() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Early Head Start's Teaching Practices Tool</h1>
+        <div className = "headerText">Early Head Start Learning Library: Create Data-Driven Lesson and Action Plans for Children's Growth</div>
       </div>
 
       <div className="hero">
@@ -28,27 +28,27 @@ function WelcomePage() {
                 C 45,120 130,90 230,120
                 C 320,146 360,70 445,45
                 C 520,24 590,60 640,115
-                C 700,240 790,170 850,225 
+                C 700,240 790,170 850,225
                 C 900,270 900,350 860,405
                 C 840,420 740,520 770,485
                 C 720,600 660,620 610,660
                 C 520,680 450,640 410,600
                 C 365,555 330,545 270,560
                 C 210,575 150,550 130,500
-                C 110,450 120,380 140,330 
+                C 110,450 120,380 140,330
                 C 450,450,120,380,140,330
                 Z" />
             </svg>
 
             <div className="blob-text">
-              <p><strong>This tool, aligned to DRDP</strong><strong>2015, will allow you to select </strong> 
+              <p><strong>This tool, aligned to DRDP</strong><strong>2015, will allow you to select </strong>
               <strong>filters to find desired</strong> <strong>teaching strategies based on </strong>
-              <strong>based on a child's</strong> 
+              <strong>based on a child's</strong>
               <strong> a child's developmental profile</strong></p>
             </div>
           </div>
         </div>
-   
+
 
       <div className="hero2">
         <div className="blob-outer2">
@@ -65,7 +65,7 @@ function WelcomePage() {
                   <feGaussianBlur stdDeviation="8" />
                 </filter>
 
-          
+
                 <path id="calloutPath" d="
                   M 90,330
                   C  60,260  150,195 255,185
@@ -83,7 +83,7 @@ function WelcomePage() {
                   Z" />
               </defs>
 
-              
+
                 {/* shadow layers (behind) */}
                 <use href="#calloutPath" fill="#1f2630" opacity=".28"
                     transform="translate(22 16) scale(0.985)"
@@ -94,7 +94,7 @@ function WelcomePage() {
 
                 {/* main pink blob (on top) */}
                 <use href="#calloutPath" fill="url(#blobGrad2)" />
-              
+
             </svg>
 
             <div className="blob-text2">
@@ -112,26 +112,26 @@ function WelcomePage() {
             <path id="bubblePath" d="
               M 200,400
 
-              
+
               C 140,245 235,135 360,120
 
               C 460,120 420,140 520,105
               C 620,70 760,135 845,280
 
-              
+
               C 880,370 822,455 810,470
-           
+
               C 740,585 610,525 490,510
               C 370,495 295,562 310,550
 
-             
+
               C 210,607 185,585 178,545
               C 170,505 180,465 200,435
 
               C 225,600 195,575 185,545
               C 175,470 185,470 200,410
-              
-            
+
+
               Z" />
 
             <clipPath id="bubbleClip">
@@ -175,7 +175,7 @@ function WelcomePage() {
       </div>
     </div>
 
-  
+
   );
 }
 

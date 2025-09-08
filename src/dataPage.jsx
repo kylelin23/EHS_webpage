@@ -11,14 +11,13 @@ function DataPage() {
 
   const [data, setData] = useState([]);
 
-  const [selectedMeasure, setSelectedMeasure] = useState('');
-  const [selectedDevelopmentalLevel, setSelectedDevelopmentalLevel] = useState([]);
-  const [selectedTeachingStrats, setSelectedTeachingStrats] = useState([]);
-  const [selectedResources, setSelectedResources] = useState('');
+  const [selectedMeasure, setSelectedMeasure] = useState('Not Selected');
+  const [selectedDevelopmentalLevel, setSelectedDevelopmentalLevel] = useState('Not Selected');
+  const [selectedTeachingStrats, setSelectedTeachingStrats] = useState(['Not Selected']);
+  const [selectedResources, setSelectedResources] = useState('Not Selected');
 
   const [developmentalLevelOpen, setDevelopmentalLevelOpen] = useState(false);
   const [teachingStratOpen, setTeachingStratOpen] = useState(false);
-  const [resourceOpen, setResourceOpen] = useState(false);
 
   const [ATLOpen, setATLOpen] = useState(false);
   const [SEDOpen, setSEDOpen] = useState(false);
@@ -80,22 +79,53 @@ function DataPage() {
   ];
 
   const teachingStrats = [
-    "Planned Learning Activity",
-    "Interactions/Teaching Strategies",
-    "Learning Environment and Materials",
-    "Family Engagement",
-    "Professional Growth and Development"
-  ];
+  { value: "Planned Learning Activity", label: "Planned Learning Activity" },
+  { value: "Interactions/Teaching Strategies", label: "Developmental Interations and Strategies" },
+  { value: "Learning Environment and Materials", label: "Learning Environment and Materials" },
+  { value: "Family Engagement", label: "Family Engagement" },
+  { value: "Professional Growth and Development", label: "Professional Growth and Development" }
+];
+
+  // const resources = [
+  //   "Frog Street",
+  //   "ITERS-3 Materials",
+  //   "ASQ Activities",
+  //   "HSELOF",
+  //   "Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB",
+  //   "National Center for Pyramid Model Innovations",
+  //   "Attendanceworks.org"
+  // ]
 
   const resources = [
-    "Frog Street",
-    "ITERS-3 Materials",
-    "ASQ Activities",
-    "HSELOF",
-    "Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB",
-    "National Center for Pyramid Model Innovations",
-    "Attendanceworks.org"
-  ]
+  {
+    value: "Frog Street",
+    label: "Frog Street"
+  },
+  {
+    value: "ITERS-3 Materials",
+    label: "ITERS"
+  },
+  {
+    value: "ASQ Activities",
+    label: "ASQ"
+  },
+  {
+    value: "HSELOF",
+    label: "HSELOF"
+  },
+  {
+    value: "Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB",
+    label: "CSEFEL"
+  },
+  {
+    value: "National Center for Pyramid Model Innovations",
+    label: "Pyramid Model"
+  },
+  {
+    value: "Attendanceworks.org",
+    label: "Attendance Works"
+  }
+];
 
   // Functions:
   const navigateBack = () => {
@@ -103,14 +133,17 @@ function DataPage() {
   }
 
   const atlDropDown = () => {
+    setSelectedMeasure('Not Selected');
     setATLOpen(!ATLOpen);
     setSEDOpen(false);
     setLLDOpen(false);
     setCOGOpen(false);
     setPHYOpen(false);
+
   }
 
   const sedDropDown = () => {
+    setSelectedMeasure('Not Selected');
     setSEDOpen(!SEDOpen);
     setATLOpen(false);
     setLLDOpen(false);
@@ -119,6 +152,7 @@ function DataPage() {
   }
 
   const lldDropDown = () => {
+    setSelectedMeasure('Not Selected');
     setLLDOpen(!LLDOpen);
     setATLOpen(false);
     setSEDOpen(false);
@@ -127,6 +161,7 @@ function DataPage() {
   }
 
   const cogDropDown = () => {
+    setSelectedMeasure('Not Selected');
     setCOGOpen(!COGOpen);
     setATLOpen(false);
     setLLDOpen(false);
@@ -135,6 +170,7 @@ function DataPage() {
   }
 
   const phyDropDown = () => {
+    setSelectedMeasure('Not Selected');
     setPHYOpen(!PHYOpen);
     setATLOpen(false);
     setLLDOpen(false);
@@ -143,29 +179,45 @@ function DataPage() {
   }
 
   const handleDevelopmentalLevelButton = (level) => {
-    if (!(selectedDevelopmentalLevel.includes(level))){
-      if (selectedDevelopmentalLevel.length >= 2){ // If there are already two Developmental Levels
-        selectedDevelopmentalLevel.splice(0, 1);
-      }
-      setSelectedDevelopmentalLevel([...selectedDevelopmentalLevel, level]);
+    if (selectedDevelopmentalLevel != (level)){
+      // if (selectedDevelopmentalLevel.length >= 2){ // If there are already two Developmental Levels
+      //   selectedDevelopmentalLevel.splice(0, 1);
+      // }
+      setSelectedDevelopmentalLevel(level);
     }
     else{
-      setSelectedDevelopmentalLevel(selectedDevelopmentalLevel.filter(item => item !== level));
+      setSelectedDevelopmentalLevel('Not Selected');
     }
     setTeachingStratOpen(true);
   }
 
   const handleTeachingStratButton = (teachingStrat) => {
-    if (!(selectedTeachingStrats.includes(teachingStrat))){
-      if (selectedTeachingStrats.length >= 2){
+    if (!(selectedTeachingStrats.includes(teachingStrat))){ // If you are clicking on a new teaching strat
+      if (selectedTeachingStrats.length >= 2 || selectedTeachingStrats[0] == 'Not Selected'){
         selectedTeachingStrats.splice(0, 1);
       }
       setSelectedTeachingStrats([...selectedTeachingStrats, teachingStrat]);
     }
     else{
-      setSelectedTeachingStrats(selectedTeachingStrats.filter(item => item !== teachingStrat));
+      if(selectedTeachingStrats.length == 1){
+        setSelectedTeachingStrats(['Not Selected']);
+      }
+      else{
+        setSelectedTeachingStrats(selectedTeachingStrats.filter(item => item !== teachingStrat));
+      }
     }
-    setResourceOpen(true);
+  }
+
+  const handleResourceButton = (resource) => {
+    if (selectedResources != (resource)){
+      // if (selectedDevelopmentalLevel.length >= 2){ // If there are already two Developmental Levels
+      //   selectedDevelopmentalLevel.splice(0, 1);
+      // }
+      setSelectedResources(resource);
+    }
+    else{
+      setSelectedResources('Not Selected');
+    }
   }
 
 
@@ -194,17 +246,24 @@ function DataPage() {
         ? data.filter(row => row["DRDP Measure"] === selectedMeasure)
         : data;
 
+      // if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
+      //   filteredData = filteredData.filter(row => {
+      //     const levels = row["** DRDP Developmental Level "].split(',').map(l => l.trim());
+      //     return selectedDevelopmentalLevel.some(level => levels.includes(level));
+      //   });
+      // }
+
       if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
         filteredData = filteredData.filter(row => {
           const levels = row["** DRDP Developmental Level "].split(',').map(l => l.trim());
-          return selectedDevelopmentalLevel.some(level => levels.includes(level));
+          return levels.includes(selectedDevelopmentalLevel);
         });
       }
 
       if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
         filteredData = filteredData.filter(row => {
           const levels2 = row["** Teaching Practice Category"].split(',').map(l => l.trim());
-          return selectedTeachingStrats.some(level2 => levels2.includes(level2));
+          return selectedTeachingStrats.some(strat => levels2.includes(strat));
         });
       }
 
@@ -219,7 +278,7 @@ function DataPage() {
   return (
   <div className="container">
     <div className="header">
-      <div className = "headerText">Early Head Start's "DRDP Tool"</div>
+      <div className = "headerText">Early Head Start Learning Library: Create Data-Driven Lesson and Action Plans for Children's Growth</div>
     </div>
 
 
@@ -238,31 +297,31 @@ function DataPage() {
 
       <div className = "dropdown2">
         <div className="measureCategoryContainer">
-          <button onClick={atlDropDown} className = "measureCategory" style = {{backgroundColor: '#3f80d4'}}>
-                Approaches to Learning {ATLOpen ? "▲" : "▼"}
+          <button onClick={atlDropDown} className = {`measureCategory ${ATLOpen == true ? "selected" : ""}`} style = {{backgroundColor: '#3f80d4'}}>
+                Approaches to Learning (ATL-REG) {ATLOpen ? "▲" : "▼"}
               </button>
 
-              <button onClick={sedDropDown} className = "measureCategory" style = {{backgroundColor: '#a1135f'}}>
-                Social and Emotional Development {SEDOpen ? "▲" : "▼"}
+              <button onClick={sedDropDown} className = {`measureCategory ${SEDOpen == true ? "selected" : ""}`} style = {{backgroundColor: '#a1135f'}}>
+                Social and Emotional Development (SED) {SEDOpen ? "▲" : "▼"}
               </button>
 
-              <button onClick={lldDropDown} className = "measureCategory" style = {{backgroundColor: '#fcba03'}}>
-                Language and Literacy {LLDOpen ? "▲" : "▼"}
+              <button onClick={lldDropDown} className = {`measureCategory ${LLDOpen == true ? "selected" : ""}`} style = {{backgroundColor: '#fcba03'}}>
+                Language and Literacy (LLD) {LLDOpen ? "▲" : "▼"}
               </button>
 
-              <button onClick={cogDropDown} className = "measureCategory" style = {{backgroundColor: '#239947'}}>
-                Cognition {COGOpen ? "▲" : "▼"}
+              <button onClick={cogDropDown} className = {`measureCategory ${COGOpen == true ? "selected" : ""}`} style = {{backgroundColor: '#239947'}}>
+                Cognition (COG) {COGOpen ? "▲" : "▼"}
               </button>
 
-              <button onClick={phyDropDown} className = "measureCategory" style = {{backgroundColor: '#e38120'}}>
-                Perceptual, Motor, and Physical Development {PHYOpen ? "▲" : "▼"}
+              <button onClick={phyDropDown} className = {`measureCategory ${PHYOpen == true ? "selected" : ""}`} style = {{backgroundColor: '#e38120'}}>
+                Perceptual, Motor, and Physical Development (PD-HLTH) {PHYOpen ? "▲" : "▼"}
               </button>
         </div>
         <div className = "measures">
           <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {ATLOpen &&
                 measures["Approaches to Learning"].map((m) => (
-                  <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
+                  <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
                     setSelectedMeasure(m),
                     setDevelopmentalLevelOpen(true)
@@ -277,7 +336,7 @@ function DataPage() {
           <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {SEDOpen &&
                 measures["Social and Emotional Development"].map((m) => (
-                  <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
+                  <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
                     setSelectedMeasure(m),
                     setDevelopmentalLevelOpen(true)
@@ -293,7 +352,7 @@ function DataPage() {
           <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {LLDOpen &&
                 measures["Language and Literacy"].map((m) => (
-                  <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
+                  <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
                     setSelectedMeasure(m),
                     setDevelopmentalLevelOpen(true)
@@ -309,7 +368,7 @@ function DataPage() {
           <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {COGOpen &&
                 measures["Cognition"].map((m) => (
-                <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
+                <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                 onClick = {() => (
                   setSelectedMeasure(m),
                   setDevelopmentalLevelOpen(true)
@@ -324,7 +383,7 @@ function DataPage() {
           <div style = {{display: 'flex', flexDirection: 'row', gap: 10}}>
           {PHYOpen &&
                 measures["Perceptual, Motor, and Physical Development"].map((m) => (
-                  <button key={m} style = {{backgroundColor: '#3b75d1'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
+                  <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
                     setSelectedMeasure(m),
                     setDevelopmentalLevelOpen(true)
@@ -347,7 +406,7 @@ function DataPage() {
               DRDP Developmental Levels
             </div>
             <div className = "smallText" style = {{color: 'black'}}>
-              (Select Up To Two)
+              (Select One)
             </div>
           </div>
 
@@ -368,7 +427,7 @@ function DataPage() {
                 key={index}
                 onClick={() => handleDevelopmentalLevelButton(level)}
                 >
-                  <div className = {`text ${selectedDevelopmentalLevel.includes(level) ? "selected" : ""}`}>
+                  <div className = {`text ${selectedDevelopmentalLevel == (level) ? "selected" : ""}`}>
                     {level}
                   </div>
                 </button>
@@ -398,7 +457,7 @@ function DataPage() {
                 {
                   teachingStrats.map((teachingStrat, index) => (
                   <button className = {`textContainer
-                    ${selectedTeachingStrats.includes(teachingStrat) ? "selected" : ""}
+                    ${selectedTeachingStrats.includes(teachingStrat.value) ? "selected" : ""}
                     ${teachingStrat == 'Planned Learning Activity' ? "plannedLearningActivity" : ""}
                     ${teachingStrat == 'Interactions/Teaching Strategies' ? "interactions" : ""}
                     ${teachingStrat == 'Learning Environment and Materials' ? "learningEnv" : ""}
@@ -407,10 +466,10 @@ function DataPage() {
 
                     `}
                   key={index}
-                  onClick={() => handleTeachingStratButton(teachingStrat)}
+                  onClick={() => handleTeachingStratButton(teachingStrat.value)}
                   >
-                    <div className = {`text ${selectedTeachingStrats.includes(teachingStrat) ? "selected" : ""}`}>
-                      {teachingStrat}
+                    <div className = {`text ${selectedTeachingStrats.includes(teachingStrat.value) ? "selected" : ""}`}>
+                      {teachingStrat.label}
                     </div>
                   </button>
                 ))}
@@ -436,21 +495,23 @@ function DataPage() {
                   {
                     resources.map((resource, index) => (
                     <button className = {`textContainer
-                      ${selectedResources.includes(resource) ? "selected" : ""}
-                      ${resource == 'Frog Street' ? "frogStreet" : ""}
-                      ${resource == 'ITERS-3 Materials' ? "iters" : ""}
-                      ${resource == 'ASQ Activities' ? "asq" : ""}
-                      ${resource == 'HSELOF' ? "hselof" : ""}
-                      ${resource == 'Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB' ? "center" : ""}
-                      ${resource == 'National Center for Pyramid Model Innovations' ? "pyramid" : ""}
-                      ${resource == 'Attendanceworks.org' ? "attendance" : ""}
+                      ${selectedResources == resource.value ? "selected" : ""}
+                      ${resource.value == 'Frog Street' ? "frogStreet" : ""}
+                      ${resource.value == 'ITERS-3 Materials' ? "iters" : ""}
+                      ${resource.value == 'ASQ Activities' ? "asq" : ""}
+                      ${resource.value == 'HSELOF' ? "hselof" : ""}
+                      ${resource.value == 'Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB' ? "center" : ""}
+                      ${resource.value == 'National Center for Pyramid Model Innovations' ? "pyramid" : ""}
+                      ${resource.value == 'Attendanceworks.org' ? "attendance" : ""}
                       `}
                     key={index}
-                    onClick={() => setSelectedResources(resource)}
+                    // onClick={() => setSelectedResources(resource)}
+                    onClick={() => handleResourceButton(resource.value)}
+
                     >
                         <div className = {`text
-                          ${selectedResources.includes(resource) ? "selected" : ""}`}>
-                          {resource}
+                          ${selectedResources.includes(resource.value) ? "selected" : ""}`}>
+                          {resource.label}
                         </div>
                     </button>
                   ))}
@@ -469,11 +530,18 @@ function DataPage() {
       {teachingStratOpen &&
 
         <div className = "data">
+
           <div style = {{display: "flex", justifyContent: 'center'}}>
             <div className = "bar2">
               Planned Learning Activities
             </div>
           </div>
+
+          <div className = "testingText">
+            {selectedMeasure}; {selectedDevelopmentalLevel}; {selectedTeachingStrats.join(", ")}; {selectedResources}
+          </div>
+
+
           {filteredData.map((teachingPractice, index) => (
             <div className = "teachingStrategy" key = {index}>
               <a href={teachingPractice["URL"]} className = "dataLink">
@@ -500,4 +568,3 @@ function DataPage() {
 }
 
 export default DataPage
-
