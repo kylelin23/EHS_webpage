@@ -8,7 +8,7 @@ function WelcomePage() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Early Head Start's Teaching Practices Tool</h1>
+        <div className = "headerText">Early Head Start's Teaching Practices Tool</div>
       </div>
 
       <div className="hero">
@@ -28,27 +28,27 @@ function WelcomePage() {
                 C 45,120 130,90 230,120
                 C 320,146 360,70 445,45
                 C 520,24 590,60 640,115
-                C 700,240 790,170 850,225 
+                C 700,240 790,170 850,225
                 C 900,270 900,350 860,405
                 C 840,420 740,520 770,485
                 C 720,600 660,620 610,660
                 C 520,680 450,640 410,600
                 C 365,555 330,545 270,560
                 C 210,575 150,550 130,500
-                C 110,450 120,380 140,330 
+                C 110,450 120,380 140,330
                 C 450,450,120,380,140,330
                 Z" />
             </svg>
 
             <div className="blob-text">
-              <p><strong>This tool, aligned to DRDP</strong><strong>2015, will allow you to select </strong> 
+              <p><strong>This tool, aligned to DRDP</strong><strong>2015, will allow you to select </strong>
               <strong>filters to find desired</strong> <strong>teaching strategies based on </strong>
-              <strong>based on a child's</strong> 
+              <strong>based on a child's</strong>
               <strong> a child's developmental profile</strong></p>
             </div>
           </div>
         </div>
-   
+
 
       <div className="hero2">
         <div className="blob-outer2">
@@ -65,7 +65,7 @@ function WelcomePage() {
                   <feGaussianBlur stdDeviation="8" />
                 </filter>
 
-          
+
                 <path id="calloutPath" d="
                   M 90,330
                   C  60,260  150,195 255,185
@@ -83,7 +83,7 @@ function WelcomePage() {
                   Z" />
               </defs>
 
-              
+
                 {/* shadow layers (behind) */}
                 <use href="#calloutPath" fill="#1f2630" opacity=".28"
                     transform="translate(22 16) scale(0.985)"
@@ -94,7 +94,7 @@ function WelcomePage() {
 
                 {/* main pink blob (on top) */}
                 <use href="#calloutPath" fill="url(#blobGrad2)" />
-              
+
             </svg>
 
             <div className="blob-text2">
@@ -108,24 +108,24 @@ function WelcomePage() {
       <div className="photo-blob">
         <svg viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <defs>
-            
+
             <clipPath id="bubbleClip">
               <path id="bubblePath" d="
                 M 125,280
-                C 170,215 340,165 540,155       
-                C 705,148 830,205 865,285       
-                C 880,320 860,360 815,395        
-                C 770,430 760,470 775,505        
-                C 735,575 600,610 490,620      
-                C 390,630 300,610 315,590   
-                C 250,573 205,548 190,520     
-                C 175,495 180,465 195,435      
-                C 210,405 185,385 160,365        
-                C 135,345 120,320 125,280       
+                C 170,215 340,165 540,155
+                C 705,148 830,205 865,285
+                C 880,320 860,360 815,395
+                C 770,430 760,470 775,505
+                C 735,575 600,610 490,620
+                C 390,630 300,610 315,590
+                C 250,573 205,548 190,520
+                C 175,495 180,465 195,435
+                C 210,405 185,385 160,365
+                C 135,345 120,320 125,280
                 Z" />
             </clipPath>
 
-        
+
             <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/>
               <feOffset in="b" dx="10" dy="10" result="o"/>
@@ -154,7 +154,7 @@ function WelcomePage() {
       </div>
     </div>
 
-  
+
   );
 }
 

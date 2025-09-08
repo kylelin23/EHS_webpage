@@ -219,7 +219,7 @@ function DataPage() {
   return (
   <div className="container">
     <div className="header">
-      <h1>Early Head Start's "DRDP Tool"</h1>
+      <div className = "headerText">Early Head Start's "DRDP Tool"</div>
     </div>
 
 
