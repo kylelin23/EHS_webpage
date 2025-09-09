@@ -80,21 +80,11 @@ function DataPage() {
 
   const teachingStrats = [
   { value: "Planned Learning Activity", label: "Planned Learning Activity" },
-  { value: "Interactions/Teaching Strategies", label: "Developmental Interations and Strategies" },
+  { value: "Interactions/Teaching Strategies", label: "Developmental Interactions and Strategies" },
   { value: "Learning Environment and Materials", label: "Learning Environment and Materials" },
   { value: "Family Engagement", label: "Family Engagement" },
   { value: "Professional Growth and Development", label: "Professional Growth and Development" }
 ];
-
-  // const resources = [
-  //   "Frog Street",
-  //   "ITERS-3 Materials",
-  //   "ASQ Activities",
-  //   "HSELOF",
-  //   "Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB",
-  //   "National Center for Pyramid Model Innovations",
-  //   "Attendanceworks.org"
-  // ]
 
   const resources = [
   {
@@ -223,7 +213,7 @@ function DataPage() {
 
   // Grab data from sampleData.csv
   useEffect(() => {
-      fetch('realData.csv')
+      fetch('updatedData.csv')
         .then(response => response.text())
         .then(text => {
           const result = Papa.parse(text, { header: true }) // Put parsed data in result
@@ -231,17 +221,9 @@ function DataPage() {
         })
     }, [])
 
-    // How to get parsed data: data[index][category]
-    // Ex: data[0]["DRDP Measure"]
-
     let filteredData = [];
 
-    if (
-      selectedMeasure ||
-      (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) ||
-      (selectedTeachingStrats && selectedTeachingStrats.length > 0) ||
-      selectedResources
-    ) {
+
       if(selectedMeasure != "Not Selected"){
         filteredData = selectedMeasure
         ? data.filter(row => row["DRDP Measure"] === selectedMeasure)
@@ -276,7 +258,7 @@ function DataPage() {
           ? filteredData.filter(row => row["Resource Agency"] === selectedResources)
           : filteredData;
       }
-    }
+
 
 
 
