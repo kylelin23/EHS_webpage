@@ -221,13 +221,11 @@ function DataPage() {
         })
     }, [])
 
-    let filteredData = [];
+    let filteredData = data;
 
 
       if(selectedMeasure != "Not Selected"){
-        filteredData = selectedMeasure
-        ? data.filter(row => row["DRDP Measure"] === selectedMeasure)
-        : data;
+        filteredData = filteredData.filter(row => row["DRDP Measure"] === selectedMeasure);
       }
 
       if(selectedDevelopmentalLevel != "Not Selected"){
