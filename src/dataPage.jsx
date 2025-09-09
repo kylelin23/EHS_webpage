@@ -230,28 +230,17 @@ function DataPage() {
         : data;
       }
 
-
-      // if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
-      //   filteredData = filteredData.filter(row => {
-      //     const levels = row["** DRDP Developmental Level "].split(',').map(l => l.trim());
-      //     return selectedDevelopmentalLevel.some(level => levels.includes(level));
-      //   });
-      // }
       if(selectedDevelopmentalLevel != "Not Selected"){
-        if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
           filteredData = filteredData.filter(row => {
             const levels = row["** DRDP Developmental Level "].split(',').map(l => l.trim());
             return levels.includes(selectedDevelopmentalLevel);
           });
-        }
       }
       if (!(selectedTeachingStrats.includes("Not Selected"))){
-        if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
           filteredData = filteredData.filter(row => {
             const levels2 = row["** Teaching Practice Category"].split(',').map(l => l.trim());
             return selectedTeachingStrats.some(strat => levels2.includes(strat));
           });
-        }
       }
       if(selectedResources != "Not Selected"){
         filteredData = selectedResources
@@ -533,7 +522,7 @@ function DataPage() {
           {filteredData.map((teachingPractice, index) => (
             <div className = "teachingStrategy" key = {index}>
               <a href={teachingPractice["URL"]} className = "dataLink">
-                <u>{teachingPractice["** FS Domain (should be Cognitive, Language, Physical or Social Emotional)"]} ({teachingPractice["Activity Title"]}): {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months</u>
+                <u>{teachingPractice["** FS Domain (should be Cognitive, Language, Physical or Social Emotional)"]} ({teachingPractice["Activity Title"]}){teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}</u>
               </a>
               <div className = "dataText">
                 {teachingPractice["Activity Description"]}
