@@ -242,9 +242,12 @@ function DataPage() {
       (selectedTeachingStrats && selectedTeachingStrats.length > 0) ||
       selectedResources
     ) {
-      filteredData = selectedMeasure
+      if(selectedMeasure != "Not Selected"){
+        filteredData = selectedMeasure
         ? data.filter(row => row["DRDP Measure"] === selectedMeasure)
         : data;
+      }
+
 
       // if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
       //   filteredData = filteredData.filter(row => {
@@ -252,24 +255,27 @@ function DataPage() {
       //     return selectedDevelopmentalLevel.some(level => levels.includes(level));
       //   });
       // }
-
-      if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
-        filteredData = filteredData.filter(row => {
-          const levels = row["** DRDP Developmental Level "].split(',').map(l => l.trim());
-          return levels.includes(selectedDevelopmentalLevel);
-        });
+      if(selectedDevelopmentalLevel != "Not Selected"){
+        if (selectedDevelopmentalLevel && selectedDevelopmentalLevel.length > 0) {
+          filteredData = filteredData.filter(row => {
+            const levels = row["** DRDP Developmental Level "].split(',').map(l => l.trim());
+            return levels.includes(selectedDevelopmentalLevel);
+          });
+        }
       }
-
-      if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
-        filteredData = filteredData.filter(row => {
-          const levels2 = row["** Teaching Practice Category"].split(',').map(l => l.trim());
-          return selectedTeachingStrats.some(strat => levels2.includes(strat));
-        });
+      if (!(selectedTeachingStrats.includes("Not Selected"))){
+        if (selectedTeachingStrats && selectedTeachingStrats.length > 0) {
+          filteredData = filteredData.filter(row => {
+            const levels2 = row["** Teaching Practice Category"].split(',').map(l => l.trim());
+            return selectedTeachingStrats.some(strat => levels2.includes(strat));
+          });
+        }
       }
-
-      filteredData = selectedResources
-        ? filteredData.filter(row => row["Resource Agency"] === selectedResources)
-        : filteredData;
+      if(selectedResources != "Not Selected"){
+        filteredData = selectedResources
+          ? filteredData.filter(row => row["Resource Agency"] === selectedResources)
+          : filteredData;
+      }
     }
 
 
