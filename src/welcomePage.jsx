@@ -7,9 +7,11 @@ function WelcomePage() {
 
   return (
     <div className="container">
-      <div className="header">
-        <h1>Early Head Start's Teaching Practices Tool</h1>
-      </div>
+      <header className="header header--compact" role="banner">
+        <h1 className="header-title">Early Head Start Learning Library</h1>
+        <p className="header-subtitle">Create data-driven lesson and action plans for children’s growth</p>
+      </header>
+
 
       <div className="hero">
         <div className="blob-outer">
@@ -20,25 +22,46 @@ function WelcomePage() {
                   <stop offset="0%"  stopColor="#0bb6af" />
                   <stop offset="100%" stopColor="#089e97" />
                 </linearGradient>
+
+                {/* blur for soft shadow */}
+                <filter id="blob1ShadowBlur" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="8" />
+                </filter>
+
+                {/* reuseable shape */}
+                <path id="blob1Path" d="
+                  M140,330
+                  C 60,300 20,240 30,190
+                  C 45,120 130,90 230,120
+                  C 320,146 360,70 445,45
+                  C 520,24 590,60 640,115
+                  C 700,240 790,170 850,225 
+                  C 900,270 900,350 860,405
+                  C 840,420 740,520 770,485
+                  C 720,600 660,620 610,647
+                  C 520,680 450,640 410,600
+                  C 365,555 330,545 270,560
+                  C 210,575 150,550 130,500
+                  C 110,450 120,380 140,330 
+                  C 450,450,120,380,140,330
+                  Z" />
               </defs>
 
-              <path fill="url(#blobGrad)" d="
-                M140,330
-                C 60,300 20,240 30,190
-                C 45,120 130,90 230,120
-                C 320,146 360,70 445,45
-                C 520,24 590,60 640,115
-                C 700,240 790,170 850,225 
-                C 900,270 900,350 860,405
-                C 840,420 740,520 770,485
-                C 720,600 660,620 610,647
-                C 520,680 450,640 410,600
-                C 365,555 330,545 270,560
-                C 210,575 150,550 130,500
-                C 110,450 120,380 140,330 
-                C 450,450,120,380,140,330
-                Z" />
+              {/* hard matte (crisp offset) */}
+              <use href="#blob1Path" fill="#1f2630" opacity="1" transform="translate(14 12)" />
+
+              {/* soft shadows (two layers) */}
+              <use href="#blob1Path" fill="#1f2630" opacity=".28"
+                  transform="translate(24 18) scale(0.985)"
+                  filter="url(#blob1ShadowBlur)" />
+              <use href="#blob1Path" fill="#1f2630" opacity=".15"
+                  transform="translate(12 9) scale(0.994)"
+                  filter="url(#blob1ShadowBlur)" />
+
+              {/* main blob */}
+              <use href="#blob1Path" fill="url(#blobGrad)" />
             </svg>
+
 
             <div className="blob-text">
               <p><strong>Welcome teachers!</strong><strong>Here is a tool that is aligned to</strong><strong> DRDP 2015, allowing you to</strong> 
@@ -59,43 +82,44 @@ function WelcomePage() {
                   <stop offset="100%" stopColor="#f5a1ff" />
                 </linearGradient>
 
-
                 <filter id="blobShadowBlur" x="-20%" y="-20%" width="140%" height="140%">
                   <feGaussianBlur stdDeviation="8" />
                 </filter>
 
-          
                 <path id="calloutPath" d="
                   M140,330
-                    C 60,300 20,240 30,190
-                    C 45,120 130,90 230,120
-                    C 320,146 360,70 445,45
-                    C 520,24 590,60 640,115
-                    C 700,240 790,170 850,225 
-                    C 900,270 900,350 860,405
-                    C 840,420 740,520 770,485
-                    C 720,600 660,620 610,647
-                    C 520,680 450,640 410,600
-                    C 365,555 330,545 270,560
-                    C 210,575 150,550 130,500
-                    C 110,450 120,380 140,330 
-                    C 450,450,120,380,140,330
-                    Z" />
+                  C 60,300 20,240 30,190
+                  C 45,120 130,90 230,120
+                  C 320,146 360,70 445,45
+                  C 520,24 590,60 640,115
+                  C 700,240 790,170 850,225 
+                  C 900,270 900,350 860,405
+                  C 840,420 740,520 770,485
+                  C 720,600 660,620 610,647
+                  C 520,680 450,640 410,600
+                  C 365,555 330,545 270,560
+                  C 210,575 150,550 130,500
+                  C 110,450 120,380 140,330 
+                  C 450,450,120,380,140,330
+                  Z" />
               </defs>
 
-              
-                {/* shadow layers (behind) */}
-                <use href="#calloutPath" fill="#1f2630" opacity=".28"
-                    transform="translate(22 16) scale(0.985)"
-                    filter="url(#blobShadowBlur)" />
-                <use href="#calloutPath" fill="#1f2630" opacity=".15"
-                    transform="translate(10 8) scale(0.994)"
-                    filter="url(#blobShadowBlur)" />
+              {/* hard matte (crisp offset) */}
+              <use href="#calloutPath" fill="#1f2630" opacity="1"
+                  transform="translate(14 12)" />
 
-                {/* main pink blob (on top) */}
-                <use href="#calloutPath" fill="url(#blobGrad2)" />
-              
+              {/* soft shadow layers (behind) */}
+              <use href="#calloutPath" fill="#1f2630" opacity=".28"
+                  transform="translate(22 16) scale(0.985)"
+                  filter="url(#blobShadowBlur)" />
+              <use href="#calloutPath" fill="#1f2630" opacity=".15"
+                  transform="translate(10 8) scale(0.994)"
+                  filter="url(#blobShadowBlur)" />
+
+              {/* main pink blob (on top) */}
+              <use href="#calloutPath" fill="url(#blobGrad2)" />
             </svg>
+
 
             <div className="blob-text2">
               <p><strong>Please select all filters on the</strong>
@@ -129,26 +153,56 @@ function WelcomePage() {
               <use href="#bubblePath" />
             </clipPath>
 
-            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/>
-              <feOffset in="b" dx="10" dy="10" result="o"/>
+         
+            <filter id="softShadowR" x="-35%" y="-25%" width="170%" height="170%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="b"/>
+              <feOffset in="b" dx="12" dy="10" result="o"/>
               <feColorMatrix in="o" type="matrix"
                 values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 .25 0" result="s"/>
-              <feMerge>
-                <feMergeNode in="s"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
+              <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+
+           
+            <filter id="softShadowL" x="-35%" y="-25%" width="170%" height="170%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="b"/>
+              <feOffset in="b" dx="-12" dy="10" result="o"/>
+              <feColorMatrix in="o" type="matrix"
+                values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 .25 0" result="s"/>
+              <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
           </defs>
 
-          {/* your photo inside the blob */}
+    
+          <use href="#bubblePath" fill="#1f2630" opacity="1"
+              transform="translate(14 12)" />
+
+       
+          <use href="#bubblePath" fill="#1f2630" opacity="1"
+              transform="translate(-14 12)" />
+
+    
+          <use href="#bubblePath" fill="#1f2630" opacity=".28"
+              transform="translate(24 18) scale(0.985)"
+              filter="url(#softShadowR)" />
+          <use href="#bubblePath" fill="#1f2630" opacity=".15"
+              transform="translate(10 8) scale(0.994)"
+              filter="url(#softShadowR)" />
+
+       
+          <use href="#bubblePath" fill="#1f2630" opacity=".22"
+              transform="translate(-24 18) scale(0.985)"
+              filter="url(#softShadowL)" />
+          <use href="#bubblePath" fill="#1f2630" opacity=".12"
+              transform="translate(-10 8) scale(0.994)"
+              filter="url(#softShadowL)" />
+
           <image
-            href="/images/Kids.png"   
+            href="/images/Kids.png"
             width="100%" height="85%"
             preserveAspectRatio="xMidYMid slice"
-            clipPath="url(#bubbleClip)"
-            filter="url(#softShadow)" />
+            clipPath="url(#bubbleClip)" />
         </svg>
+
       </div>
 
 

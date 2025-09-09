@@ -1,41 +1,141 @@
+/* --- global reset to prevent any scroll --- */
+html, body, #root {
+  height: 100%;
+  padding:0;
+  margin: 0;
+}
+body {
+  overflow-x: hidden;          /* no vertical or horizontal scroll */
+  overflow-y: auto;
+}
+* { box-sizing: border-box; } /* keeps padding from pushing width > 100% */
+
 :root{
   /* one knob for blob 1 size + text */
-  --blob-size: clamp(30rem, 100vw, 45rem);
-  --blob-font: clamp(0.95rem, 1.6vw, 1.2rem);
-  --blob2-w: clamp(18rem, 36vw, 39rem);
+
+  --blob-font: clamp(1vw, 1.6vw, 2vw);
+
 
   /* position knobs (avoid stacking random translates/margins) */
-  --blob1-x: 52vw;
-  --blob1-y: -1vh;
 
-  --blob2-x: 13vw;
-  --blob2-y: -68vh;
 
-  --photo-blob-x: -28vw;
-  --photo-blob-y: -86vh;
 
-  --next-button-x: 0;
-  --next-button-y: -110vh;
-  --next-button-width: clamp(6rem, 0vw, 40rem);
-  --next-button-height: clamp(4rem, 4vw, 10rem);
+  --next-button-width: clamp(5vw, 10vw, 30vw);
+  --next-button-height: clamp(4vw, 5vw, 12vw);
 }
 
 /* page chrome */
-.container { display:flex; flex-direction:column; width:100vw; min-height:100%; background:#fae8e0; }
-.header { background:#2a383f; height:10vw; display:flex; align-items:center; justify-content:center; width:100%; padding-top: 3vw; padding-bottom: 3vw;}
-h1 { color:#ffffff;}
-.headerText {color: white; font-size: 2.5vw; font-weight: bold; text-align: center; width: 50vw;}
-.body { min-height:80vh; padding: 2rem; flex:1; }
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100dvh;   /* exactly fills the screen height */
+  overflow-x: hidden;   /* prevent sideways scroll */
 
-.hero { display:grid; gap: clamp(0.75rem, 2.5vw, 1.5rem); padding: clamp(1rem, 3vw, 2rem); }
+}
+:root{
+  /* tweak hues if needed */
+  --bg-left:   #5f7f98;  /* darker blue-gray (left) */
+  --bg-mid:    #86a6bf;  /* bridge tone */
+  --bg-light:  #cfe2f1;  /* light blue around center */
+  --bg-xlight: #e8f3fb;  /* very light blue (right) */
+  --blue-wash: #c9e0f4;  /* translucent tint for right-half overlay */
+  --blue-glow: #eef6fd;  /* pale blue glow */
+}
+
+.container{
+  background:
+    /* soft pale-blue glow near top-right */
+    radial-gradient(120% 100% at 88% 8%,
+      var(--blue-glow) 0%,
+      color-mix(in oklab, var(--blue-glow) 60%, transparent) 18%,
+      transparent 48%),
+
+    /* gentle blue wash from 50% → right (no white) */
+    linear-gradient(90deg,
+      transparent 0%,
+      transparent 46%,
+      color-mix(in oklab, var(--blue-wash) 45%, transparent) 54%,
+      color-mix(in oklab, var(--blue-wash) 70%, transparent) 68%,
+      color-mix(in oklab, var(--blue-wash) 95%, transparent) 100%),
+
+    /* base sweep with a smoother, earlier blend */
+    linear-gradient(135deg,
+      var(--bg-left) 0%,
+      var(--bg-left) 26%,
+      var(--bg-mid)  40%,
+      var(--bg-light) 50%,
+      var(--bg-xlight) 100%);
+}
+
+
+
+/* kill any old fixed height on .header */
+.header{
+  background:#2a383f;
+  padding: 1vw 2vw;
+  /* stack title over subtitle */
+  display:flex;
+  flex-direction: column;   /* ← key line */
+  align-items:center;
+  text-align:center;
+  
+}
+
+/* compact header: stacks title over subtitle and makes it thin */
+.container > .header.header--compact{
+  display:flex;
+  flex-direction:column;       /* title on top, subtitle below */
+  align-items:center;
+  text-align:center;
+
+  height:auto !important;      /* nuke any old fixed height */
+  padding: 0.8vw 2.4vw !important;  /* thinner padding that will stick */
+  background:#2a383f;          /* keep your color */
+}
+
+/* typography */
+.header.header--compact .header-title{
+  margin:0;
+  color:#fff;
+  font-weight:800;
+  line-height:1.1;
+  font-size: clamp(2.8vw, 3.6vw, 5vw);
+}
+.header.header--compact .header-subtitle{
+  margin: .5vw 0 0;
+  color: rgba(255,255,255,.92);
+  font-weight:600;
+  line-height:1.25;
+  font-size: clamp(1.2vw, 1.6vw, 2.2vw);
+}
+
+
+
+h1 { color:#ffffff;}
+h1, p {
+  margin: 0;
+}
+.headerText {color: white; font-size: 2.5vw; font-weight: bold; text-align: center; width: 50vw;}
+
+
+.hero { display:grid; gap: clamp(2vw, 2.5vw, 3vw); padding: clamp(3vw, 4vw, 6vw); margin:0;}
 
 /* ---------- Blob 1 ---------- */
+:root{
+  --blob1-left: 2.5vw;   /* X position in vw */
+  --blob1-top:  10vw;    /* Y position in vw */
+  --blob-size: clamp(20vw, 45vw, 70vw);
+}
+
 .blob-outer{
-  display:grid;
-  justify-items:start;
-  align-items:start;
-  /* move the whole block with variables (no px) */
-  translate: var(--blob1-x) var(--blob1-y);
+  position: absolute;
+  left: var(--blob1-left);
+  top:  var(--blob1-top);
+  display: grid;
+  justify-items: start;
+  align-items: start;
 }
 
 .blob-card{
@@ -43,77 +143,134 @@ h1 { color:#ffffff;}
   width: var(--blob-size);
   aspect-ratio: 5 / 4;
   font-size: var(--blob-font);
-  filter: drop-shadow(0 2vw 4vw rgba(0,0,0,.12));
+  filter: none;
 }
 .blob-svg{ position:absolute; inset:0; width:100%; height:100%; }
 
 .blob-text{
   position:absolute; inset:0;
   display:grid; place-items:center; text-align:center; color:#19333c;
-  padding: clamp(1rem, 3.5vw, 2.5rem);
-  font-size: 1.6vw;             /* follows .blob-card */
+  padding: clamp(2vw, 3.5vw, 4vw);
+  font-size: 1.6vw;
   line-height: 1.3; font-weight:600;
 }
-.blob-text strong{ display:block; margin-block-end:.3em; font-weight:700; }
+.blob-text strong{ display:block; margin-block-end:.5vw; font-weight:700; }
 
 /* ---------- Blob 2 ---------- */
+:root{
+  --blob2-w: clamp(40vw, 45vw, 90vw);  /* adjust max as needed */
+  --blob2-center-x: 68vw;              /* center of viewport */
+  --blob2-top: 9vw;
+}
+
+/* Place blob 2 */
 .blob-outer2{
-  display:grid; justify-items:start; align-items:start;
-  translate: var(--blob2-x) var(--blob2-y);
-}
-
-.blob-card2 {
-  position: relative;
-  width: clamp(18rem, 38vw, 42rem);
-  aspect-ratio: 16/11;
-  margin-top: -5vh; /* or translate: 0 -5vh */
-}
-
-.blob-svg2{ position:absolute; inset:0; width:100%; height:100%; }
-
-
-.blob-text2{
   position: absolute;
-  inset: 0;                                /* fill the card */
-  display: flex;                           /* perfect centering */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0;
-  font-size: 1.45vw;                             /* don't offset the center */
+  top:  var(--blob2-top);
+  left: calc(var(--blob2-center-x) - (var(--blob2-w) / 2));
 }
-.blob-text2 strong{ display:block; margin-block-end:.3em; font-weight:700; }
+
+/* Let width control size via aspect-ratio (no fixed height) */
 .blob-card2{
   position: relative;
   width: var(--blob2-w);
   aspect-ratio: 16 / 11;
+  margin-top: 0; /* remove the -5vw that can cause odd layout */
 }
 
-/* Size & position of the photo blob (responsive, no px) */
+.blob-svg2{ position:absolute; inset:0; width:100%; height:100%; }
+
+.blob-text2{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  font-size: 1.5vw;
+}
+.blob-text2 strong{ display:block; margin-block-end:.5vw; font-weight:700; }
+
+/* Size & position of the photo blob */
+:root{
+  --photo-left: 55vw;
+  --photo-top:  26vw;
+}
+
 .photo-blob{
-  width: clamp(20rem, 40vw, 40rem);   /* ← make the blob larger/smaller */
-  margin-inline: auto;                /* center horizontally */
-  margin-block: clamp(1rem, 6vh, 4rem);
+  position: absolute;
+  left: var(--photo-left);
+  top:  var(--photo-top);
+  width: clamp(30vw, 40vw, 50vw);
+  margin: 0;
 }
 .photo-blob > svg{
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 0; /* keep SVG crisp */
+  border-radius: 0;
   translate: var(--photo-blob-x) var(--photo-blob-y);
 }
 
-
 /* button */
 .next-btn{
-  padding: clamp(0.6rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
-  background:#2a383f; color:#fae8e0; border:0; border-radius:300vmax;
-  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  position: absolute;            /* or 'fixed' if you want it pinned to the viewport */
+  left: 50%;
+  bottom: 4vw;                   /* adjust to taste */
+  transform: translateX(-50%);   /* centers horizontally */
+  
+  /* keep your sizing/visuals */
+  padding: clamp(1vw, 1.5vw, 2vw) clamp(2vw, 3vw, 4vw);
+  background:#ffffff; color:#2a383f; border:0; border-radius:300vmax;
+  font-size: clamp(1vw, 1.6vw, 2vw);
   cursor:pointer;
-  translate: var(--next-button-x) var(--next-button-y);
   width: var(--next-button-width);
   height: var(--next-button-height);
-}
-.next-btn:hover{ filter:brightness(1.06); }
-.next-btn{ justify-self:center; }
 
+  /* REMOVE the big upward translate */
+  translate: none;
+}
+
+.next-btn{
+  /* your existing positioning/sizing … */
+
+  /* right-only shadow stack */
+  box-shadow:
+     0.7vw 0.8vw 0 #1f2630,              /* hard matte on the right */
+     1.2vw 1.6vw 1.2vw rgba(0,0,0,.26);  /* soft right blur */
+}
+
+.next-btn:hover{
+  box-shadow:
+     0.7vw 0.8vw 0 #1f2630,
+     1.4vw 1.9vw 1.4vw rgba(0,0,0,.30);
+  transition: box-shadow 160ms ease;
+}
+
+.next-btn:focus-visible{
+  outline: none;
+  box-shadow:
+     0 0 0 0.35vw rgba(255,255,255,.55), /* subtle focus ring */
+     0.7vw 0.8vw 0 #1f2630,
+     1.2vw 1.6vw 1.2vw rgba(0,0,0,.26);
+}
+
+
+
+/* (optional) If any transforms/filters push scroll area, clip Y on the container */
+.container { overflow-y: auto; }      /* allow content scroll if needed */
+
+
+.photo-blob {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.photo-blob > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
