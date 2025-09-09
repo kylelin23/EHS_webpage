@@ -19,8 +19,8 @@ function WelcomePage() {
             <svg className="blob-svg" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <defs>
                 <linearGradient id="blobGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%"  stopColor="#0bb6af" />
-                  <stop offset="100%" stopColor="#089e97" />
+                  <stop offset="0%"  stopColor="#B7EDF0" />
+                  <stop offset="100%" stopColor="#B7EDF0" />
                 </linearGradient>
 
                 {/* blur for soft shadow */}
@@ -78,8 +78,8 @@ function WelcomePage() {
             <svg className="blob-svg2" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <defs>
                 <linearGradient id="blobGrad2" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%"  stopColor="#f772e3" />
-                  <stop offset="100%" stopColor="#f5a1ff" />
+                  <stop offset="0%"  stopColor="#DBB1CF" />
+                  <stop offset="100%" stopColor="#DBB1CF" />
                 </linearGradient>
 
                 <filter id="blobShadowBlur" x="-20%" y="-20%" width="140%" height="140%">
