@@ -252,9 +252,10 @@ function DataPage() {
 
   return (
   <div className="container">
-    <div className="header">
-      <div className = "headerText">Early Head Start Learning Library: Create Data-Driven Lesson and Action Plans for Children's Growth</div>
-    </div>
+    <header className="header header--compact" role="banner">
+        <h1 className="header-title">Early Head Start Learning Library</h1>
+        <p className="header-subtitle">Create data-driven lesson and action plans for children’s growth</p>
+      </header>
 
 
     <div className = "body">
