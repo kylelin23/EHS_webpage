@@ -213,7 +213,7 @@ function DataPage() {
 
   // Grab data from sampleData.csv
   useEffect(() => {
-      fetch('updatedData.csv')
+      fetch('realData.csv')
         .then(response => response.text())
         .then(text => {
           const result = Papa.parse(text, { header: true }) // Put parsed data in result

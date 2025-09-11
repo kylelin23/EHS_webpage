@@ -40,6 +40,7 @@ h1 {
 .dataText {
   color: black;
   font-size: 1vw;
+  white-space: pre-line;
 }
 
 .dataLink {
@@ -262,7 +263,6 @@ h1 {
   gap: 1vw;
   align-items: center;
   margin-top: 3vw;
-
 }
 
 .teachingStrategy {
