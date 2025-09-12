@@ -54,6 +54,7 @@ h1 {
   margin-top: 5vw;
   width: 100vw;
   display: flex;
+  gap: 0.3vw;
   justify-content: center;
 }
 
