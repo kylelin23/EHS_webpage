@@ -209,12 +209,21 @@ h1 {
   background-color: #2a383f;
   height: 7vw;
   width: 90vw;
-  color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2vw;
   font-weight: bold;
+}
+
+.domainText {
+  font-size: 2vw;
+  color: white;
+}
+
+.domainSubText {
+  font-size: 1vw;
+  color: white;
 }
 
 .bar2 {

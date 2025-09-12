@@ -267,7 +267,8 @@ function DataPage() {
 
       <div style = {{display: "flex", justifyContent: 'center'}}>
         <div className = "bar">
-          DRDP Domains (Select One)
+          <div className = "domainText">DRDP Domains</div>
+          <div className = "domainSubText">Select One</div>
         </div>
       </div>
 
