@@ -230,11 +230,10 @@ h1 {
   background-color: #2a383f;
   height: 7vw;
   width: 90vw;
-  color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2vw;
   font-weight: bold;
 }
 
@@ -260,10 +259,13 @@ h1 {
 }
 
 .testingText {
-  color: black;
+  color: white;
   font-weight: bold;
   width: 90vw;
   font-size: 1vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 .data {

@@ -510,13 +510,17 @@ function DataPage() {
 
           <div style = {{display: "flex", justifyContent: 'center'}}>
             <div className = "bar2">
-              Planned Learning Activities
+              <div className = "domainText">
+                Planned Learning Activities
+              </div>
+
+              <div className = "testingText">
+                {selectedMeasure}; {selectedDevelopmentalLevel}; {selectedTeachingStrats.join(", ")}; {selectedResources}
+              </div>
             </div>
           </div>
 
-          <div className = "testingText">
-            {selectedMeasure}; {selectedDevelopmentalLevel}; {selectedTeachingStrats.join(", ")}; {selectedResources}
-          </div>
+
 
 
           {filteredData.map((teachingPractice, index) => (
