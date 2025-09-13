@@ -118,9 +118,6 @@ function DataPage() {
 ];
 
   // Functions:
-  const navigateBack = () => {
-    navigate("/");
-  }
 
   const atlDropDown = () => {
     setSelectedMeasure('Not Selected');
@@ -376,7 +373,6 @@ function DataPage() {
 
         <div style = {{display: 'flex', justifyContent: 'center'}}>
 
-        {developmentalLevelOpen &&
         <div className="developmentalLevelOuterContainer">
           <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <div className = "titleText">
@@ -413,11 +409,10 @@ function DataPage() {
           </div>
 
         </div>
-        }
+
         </div>
 
         <div style = {{display: 'flex', justifyContent: 'center'}}>
-          {teachingStratOpen &&
 
           <div className="teachingStratOuterContainer">
 
@@ -454,10 +449,9 @@ function DataPage() {
               </div>
               </div>
 
-            }
+
         </div>
             <div style = {{display: 'flex', justifyContent: 'center'}}>
-              {teachingStratOpen &&
               <div className="resourcesOuterContainer">
 
                 <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -496,7 +490,7 @@ function DataPage() {
               </div>
               </div>
               </div>
-              }
+
             </div>
 
 
@@ -504,7 +498,10 @@ function DataPage() {
       </div>
 
 
-      {teachingStratOpen &&
+      { (selectedMeasure != 'Not Selected'
+        || selectedDevelopmentalLevel != 'Not Selected'
+        || selectedTeachingStrats != ['Not Selected']
+        || selectedResources != 'Not Selected') &&
 
         <div className = "data">
 
@@ -519,6 +516,9 @@ function DataPage() {
               </div>
             </div>
           </div>
+          { filteredData.length == 0 &&
+            <div className = "smallText">No Activities to Display</div>
+          }
 
 
 
