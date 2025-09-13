@@ -509,7 +509,7 @@ function DataPage() {
 
       { (selectedMeasure != 'Not Selected'
         || selectedDevelopmentalLevel != 'Not Selected'
-        || selectedTeachingStrats != ['Not Selected']
+        || selectedTeachingStrats[0] != 'Not Selected'
         || selectedResources != 'Not Selected') &&
 
         <div className = "data">
