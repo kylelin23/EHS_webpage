@@ -248,6 +248,25 @@ function DataPage() {
       }
 
 
+      if (selectedResources === "Frog Street Infant") {
+        const parseAgeRange = (range) => {
+          if (!range) return [Infinity, Infinity];
+          return range.split("-").map(num => parseInt(num.trim(), 10));
+        };
+
+        filteredData = filteredData.sort((a, b) => {
+          const [aStart, aEnd] = parseAgeRange(a["Age Range (months) should be the numbers only, e.g., 6-12)"]);
+          const [bStart, bEnd] = parseAgeRange(b["Age Range (months) should be the numbers only, e.g., 6-12)"]);
+
+          if (aStart !== bStart) return aStart - bStart;
+          return aEnd - bEnd;
+        });
+      }
+
+
+
+
+
 
 
 
@@ -382,22 +401,24 @@ function DataPage() {
             <div className = "developmentalLevelContainer">
               {
                 developmentalLevels.map((level, index) => (
-                <button className = {`textContainer
-                  ${selectedDevelopmentalLevel.includes(level) ? "selected" : ""}
-                  ${level == 'Responding Earlier' ? "respondingEarlier" : ""}
-                  ${level == 'Responding Later' ? "respondingLater" : ""}
-                  ${level == 'Exploring Earlier' ? "exploringEarlier" : ""}
-                  ${level == 'Exploring Middle' ? "exploringMiddle" : ""}
-                  ${level == 'Exploring Later' ? "exploringLater" : ""}
-                  ${level == 'Building Earlier' ? "buildingEarlier" : ""}
-                  }`}
-                key={index}
-                onClick={() => handleDevelopmentalLevelButton(level)}
-                >
-                  <div className = {`text ${selectedDevelopmentalLevel == (level) ? "selected" : ""}`}>
-                    {level}
-                  </div>
-                </button>
+                  <button className = {`textContainer
+                    ${selectedDevelopmentalLevel.includes(level) ? "selected" : ""}
+                    ${level == 'Responding Earlier' ? "respondingEarlier" : ""}
+                    ${level == 'Responding Later' ? "respondingLater" : ""}
+                    ${level == 'Exploring Earlier' ? "exploringEarlier" : ""}
+                    ${level == 'Exploring Middle' ? "exploringMiddle" : ""}
+                    ${level == 'Exploring Later' ? "exploringLater" : ""}
+                    ${level == 'Building Earlier' ? "buildingEarlier" : ""}
+                    }`}
+                  key={index}
+                  onClick={() => handleDevelopmentalLevelButton(level)}
+                  >
+                    <div className = {`text ${selectedDevelopmentalLevel == (level) ? "selected" : ""}`}>
+                      {level}
+                    </div>
+                  </button>
+
+
               ))}
             </div>
           </div>
@@ -525,7 +546,7 @@ function DataPage() {
             <div className = "teachingStrategy" key = {index}>
               <a href={teachingPractice["URL"]} target="_blank" rel="noopener noreferrer" className = "dataLink">
                 <u>
-                  {teachingPractice["Resource Agency"]}, {teachingPractice["FS ActivityCard #"] ? `${teachingPractice["FS ActivityCard #"]}, ` : ""}{teachingPractice["ASQ page number"] ? `Page ${teachingPractice["ASQ page number"]}, ` : ""}"{teachingPractice["Activity Title"]}", {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `Age Range: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}
+                  {teachingPractice["Resource Agency"]}, {teachingPractice["FS ActivityCard #"] ? `${teachingPractice["FS ActivityCard #"]}, ` : ""}{(teachingPractice["ASQ page number"] && !teachingPractice["FS ActivityCard #"]) ? `Page ${teachingPractice["ASQ page number"]}, ` : ""}"{teachingPractice["Activity Title"]}", {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `Age Range: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}
                 </u>
               </a>
               <div className = "dataText">
@@ -543,11 +564,11 @@ function DataPage() {
           <div className = "smallText" style = {{color: 'gray'}}>If you have questions or feedback please fill out this</div>
           <a className = "smallText" style = {{}} href = "https://nhais.org/Intranet/Apps/Serv_Req/Serv_req_form.cfm?tnDeptID=72&tnQlink=0"><u> Service Request Form</u></a>
         </div>
-        <div style = {{display: 'flex', justifyContent: 'center'}}>
+        {/* <div style = {{display: 'flex', justifyContent: 'center'}}>
           <div>
             <a target="_blank" href="https://icons8.com/icon/59/soccer-ball">Football</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
           </div>
-        </div>
+        </div> */}
     </div>
     </div>
 
