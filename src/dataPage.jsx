@@ -525,8 +525,10 @@ function DataPage() {
 
           {filteredData.map((teachingPractice, index) => (
             <div className = "teachingStrategy" key = {index}>
-              <a href={teachingPractice["URL"]} className = "dataLink">
-                <u>{teachingPractice["** FS Domain (should be Cognitive, Language, Physical or Social Emotional)"]} ({teachingPractice["Activity Title"]}){teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}</u>
+              <a href={teachingPractice["URL"]} target="_blank" rel="noopener noreferrer" className = "dataLink">
+                <u>
+                  {teachingPractice["Resource Agency"]}, {teachingPractice["FS ActivityCard #"] ? `Card ${teachingPractice["FS ActivityCard #"]}, ` : ""}{teachingPractice["ASQ page number"] ? `Page ${teachingPractice["ASQ page number"]}, ` : ""}"{teachingPractice["Activity Title"]}", {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `Age Range: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}
+                </u>
               </a>
               <div className = "dataText">
                 {teachingPractice["Activity Description"]}
@@ -542,6 +544,11 @@ function DataPage() {
         <div className = "feedbackContainer">
           <div className = "smallText" style = {{color: 'gray'}}>If you have questions or feedback please fill out this</div>
           <a className = "smallText" style = {{}} href = "https://nhais.org/Intranet/Apps/Serv_Req/Serv_req_form.cfm?tnDeptID=72&tnQlink=0"><u> Service Request Form</u></a>
+        </div>
+        <div style = {{display: 'flex', justifyContent: 'center'}}>
+          <div>
+            <a target="_blank" href="https://icons8.com/icon/59/soccer-ball">Football</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+          </div>
         </div>
     </div>
     </div>

@@ -223,7 +223,7 @@ h1 {
 }
 
 .domainSubText {
-  font-size: 1vw;
+  font-size: 1.25vw;
   color: white;
 }
 
@@ -263,7 +263,7 @@ h1 {
   color: white;
   font-weight: bold;
   width: 90vw;
-  font-size: 1vw;
+  font-size: 1.25vw;
   display: flex;
   text-align: center;
   justify-content: center;
@@ -293,5 +293,5 @@ h1 {
 }
 
 .smallText {
-  font-size: 1vw
+  font-size: 1.25vw
 }
