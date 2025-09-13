@@ -176,7 +176,11 @@ h1 {
   background-color: #7fc7c9;
 } */
 
-.textContainer.frogStreet {
+.textContainer.frogStreetInfant {
+  background-color: #a2eba0;
+}
+
+.textContainer.frogStreetToddler {
   background-color: #46e87c;
 }
 
@@ -294,4 +298,12 @@ h1 {
 
 .smallText {
   font-size: 1.25vw
+}
+
+.resourceContainer {
+  display: flex;
+  gap: 2vw;
+  margin-top: 1.5vw;
+  flex-wrap: wrap;
+  justify-content: center;
 }

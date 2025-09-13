@@ -85,8 +85,12 @@ function DataPage() {
 
   const resources = [
   {
-    value: "Frog Street",
-    label: "Frog Street"
+    value: "Frog Street Infant",
+    label: "Frog Street Infant"
+  },
+  {
+    value: "Frog Street Toddler",
+    label: "Frog Street Toddler"
   },
   {
     value: "ITERS-3 Materials",
@@ -456,19 +460,20 @@ function DataPage() {
               <div className="resourcesOuterContainer">
 
                 <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <div className = "titleText">
-                  Resources
+                  <div className = "titleText">
+                    Resources
+                  </div>
                 </div>
-              </div>
               <div style = {{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
 
               <div className="dropdownContainer2">
-                <div className = "developmentalLevelContainer">
+                <div className = "resourceContainer">
                   {
                     resources.map((resource, index) => (
                     <button className = {`textContainer
                       ${selectedResources == resource.value ? "selected" : ""}
-                      ${resource.value == 'Frog Street' ? "frogStreet" : ""}
+                      ${resource.value == 'Frog Street Infant' ? "frogStreetInfant" : ""}
+                      ${resource.value == 'Frog Street Toddler' ? "frogStreetToddler" : ""}
                       ${resource.value == 'ITERS-3 Materials' ? "iters" : ""}
                       ${resource.value == 'ASQ Activities' ? "asq" : ""}
                       ${resource.value == 'HSELOF' ? "hselof" : ""}
@@ -487,6 +492,9 @@ function DataPage() {
                         </div>
                     </button>
                   ))}
+
+
+                  
                 </div>
               </div>
               </div>
