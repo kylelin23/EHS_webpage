@@ -16,9 +16,6 @@ function DataPage() {
   const [selectedTeachingStrats, setSelectedTeachingStrats] = useState(['Not Selected']);
   const [selectedResources, setSelectedResources] = useState('Not Selected');
 
-  const [developmentalLevelOpen, setDevelopmentalLevelOpen] = useState(false);
-  const [teachingStratOpen, setTeachingStratOpen] = useState(false);
-
   const [ATLOpen, setATLOpen] = useState(false);
   const [SEDOpen, setSEDOpen] = useState(false);
   const [LLDOpen, setLLDOpen] = useState(false);
@@ -165,6 +162,15 @@ function DataPage() {
     setSEDOpen(false);
   }
 
+  const handleMeasureButton = (measure) => {
+    if (selectedMeasure != (measure)){
+      setSelectedMeasure(measure);
+    }
+    else{
+      setSelectedMeasure('Not Selected');
+    }
+  }
+
   const handleDevelopmentalLevelButton = (level) => {
     if (selectedDevelopmentalLevel != (level)){
       // if (selectedDevelopmentalLevel.length >= 2){ // If there are already two Developmental Levels
@@ -210,7 +216,7 @@ function DataPage() {
 
   // Grab data from sampleData.csv
   useEffect(() => {
-      fetch('realData.csv')
+      fetch('updatedData.csv')
         .then(response => response.text())
         .then(text => {
           const result = Papa.parse(text, { header: true }) // Put parsed data in result
@@ -297,8 +303,7 @@ function DataPage() {
                 measures["Approaches to Learning"].map((m) => (
                   <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
-                    setSelectedMeasure(m),
-                    setDevelopmentalLevelOpen(true)
+                    handleMeasureButton(m)
                 )}
                   >
                     <div className = "text">
@@ -312,8 +317,7 @@ function DataPage() {
                 measures["Social and Emotional Development"].map((m) => (
                   <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
-                    setSelectedMeasure(m),
-                    setDevelopmentalLevelOpen(true)
+                    handleMeasureButton(m)
                   )}
                   >
                     <div className = "text">
@@ -328,8 +332,7 @@ function DataPage() {
                 measures["Language and Literacy"].map((m) => (
                   <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
-                    setSelectedMeasure(m),
-                    setDevelopmentalLevelOpen(true)
+                    handleMeasureButton(m)
                   )}
                   >
                     <div className = "text">
@@ -344,8 +347,7 @@ function DataPage() {
                 measures["Cognition"].map((m) => (
                 <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                 onClick = {() => (
-                  setSelectedMeasure(m),
-                  setDevelopmentalLevelOpen(true)
+                  handleMeasureButton(m)
                 )}
                 >
                   <div className = "text">
@@ -359,8 +361,7 @@ function DataPage() {
                 measures["Perceptual, Motor, and Physical Development"].map((m) => (
                   <button key={m} style = {{backgroundColor: '#a6ddff'}} className = {`textContainer ${selectedMeasure.includes(m) ? "selected" : ""}`}
                   onClick = {() => (
-                    setSelectedMeasure(m),
-                    setDevelopmentalLevelOpen(true)
+                    handleMeasureButton(m)
                 )}
                   >
                     <div className = "text">
@@ -527,7 +528,7 @@ function DataPage() {
             <div className = "teachingStrategy" key = {index}>
               <a href={teachingPractice["URL"]} target="_blank" rel="noopener noreferrer" className = "dataLink">
                 <u>
-                  {teachingPractice["Resource Agency"]}, {teachingPractice["FS ActivityCard #"] ? `Card ${teachingPractice["FS ActivityCard #"]}, ` : ""}{teachingPractice["ASQ page number"] ? `Page ${teachingPractice["ASQ page number"]}, ` : ""}"{teachingPractice["Activity Title"]}", {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `Age Range: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}
+                  {teachingPractice["Resource Agency"]}, {teachingPractice["FS ActivityCard #"] ? `${teachingPractice["FS ActivityCard #"]}, ` : ""}{teachingPractice["ASQ page number"] ? `Page ${teachingPractice["ASQ page number"]}, ` : ""}"{teachingPractice["Activity Title"]}", {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `Age Range: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}
                 </u>
               </a>
               <div className = "dataText">
