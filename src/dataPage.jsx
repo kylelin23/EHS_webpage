@@ -105,15 +105,15 @@ function DataPage() {
     label: "HSELOF"
   },
   {
-    value: "Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB",
+    value: "CSEFEL",
     label: "CSEFEL"
   },
   {
-    value: "National Center for Pyramid Model Innovations",
+    value: "Pyramid Model",
     label: "Pyramid Model"
   },
   {
-    value: "Attendanceworks.org",
+    value: "Attendance Works",
     label: "Attendance Works"
   }
 ];
@@ -477,9 +477,9 @@ function DataPage() {
                       ${resource.value == 'ITERS-3 Materials' ? "iters" : ""}
                       ${resource.value == 'ASQ Activities' ? "asq" : ""}
                       ${resource.value == 'HSELOF' ? "hselof" : ""}
-                      ${resource.value == 'Center on the Social and Emotional Foundations for Early Learning grantee of HS, CCB' ? "center" : ""}
-                      ${resource.value == 'National Center for Pyramid Model Innovations' ? "pyramid" : ""}
-                      ${resource.value == 'Attendanceworks.org' ? "attendance" : ""}
+                      ${resource.value == 'CSEFEL' ? "center" : ""}
+                      ${resource.value == 'Pyramid Model' ? "pyramid" : ""}
+                      ${resource.value == 'Attendance Works' ? "attendance" : ""}
                       `}
                     key={index}
                     // onClick={() => setSelectedResources(resource)}
@@ -494,7 +494,7 @@ function DataPage() {
                   ))}
 
 
-                  
+
                 </div>
               </div>
               </div>
