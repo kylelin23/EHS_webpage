@@ -546,7 +546,7 @@ function DataPage() {
             <div className = "teachingStrategy" key = {index}>
               <a href={teachingPractice["URL"]} target="_blank" rel="noopener noreferrer" className = "dataLink">
                 <u>
-                  {teachingPractice["Resource Agency"]}, {teachingPractice["FS ActivityCard #"] ? `${teachingPractice["FS ActivityCard #"]}, ` : ""}{(teachingPractice["ASQ page number"] && !teachingPractice["FS ActivityCard #"]) ? `Page ${teachingPractice["ASQ page number"]}, ` : ""}"{teachingPractice["Activity Title"]}", {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `Age Range: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}
+                  {teachingPractice["Resource Agency"]}; {teachingPractice["FS ActivityCard #"] ? `${teachingPractice["FS ActivityCard #"]}; ` : ""}{(teachingPractice["ASQ page number"] && !teachingPractice["FS ActivityCard #"]) ? `Page ${teachingPractice["ASQ page number"]}; ` : ""}"{teachingPractice["Activity Title"]}"; {teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"] ? `Age Range: ${teachingPractice["Age Range (months) should be the numbers only, e.g., 6-12)"]} months` : ""}
                 </u>
               </a>
               <div className = "dataText">
