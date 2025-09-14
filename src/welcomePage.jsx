@@ -209,7 +209,7 @@ function WelcomePage() {
 
 
 
-  <button className="next-btn" onClick={navigateButton}>Next</button>
+  <button className="next-btn" onClick={navigateButton}>Start Here!</button>
       </div>
     </div>
 

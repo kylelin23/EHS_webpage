@@ -20,8 +20,8 @@ body {
 
 
 
-  --next-button-width: clamp(5vw, 10vw, 30vw);
-  --next-button-height: clamp(4vw, 5vw, 12vw);
+  --next-button-width: clamp(5vw, 14vw, 30vw);
+  --next-button-height: clamp(4vw, 6.5vw, 12vw);
 }
 
 /* page chrome */
@@ -189,6 +189,7 @@ h1, p {
   text-align: center;
   padding: 0;
   font-size: 1.5vw;
+  color: black;
 }
 .blob-text2 strong{ display:block; margin-block-end:.5vw; font-weight:700; }
 
