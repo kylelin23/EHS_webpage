@@ -182,7 +182,6 @@ function DataPage() {
     else{
       setSelectedDevelopmentalLevel('Not Selected');
     }
-    setTeachingStratOpen(true);
   }
 
   const handleTeachingStratButton = (teachingStrat) => {
@@ -508,23 +507,27 @@ function DataPage() {
 
             <div className = "developmentalLevelContainer">
               {
-                developmentalLevels.map((level, index) => (
-                  <button className = {`textContainer
-                    ${selectedDevelopmentalLevel.includes(level) ? "selected" : ""}
-                    ${level == 'Responding Earlier' ? "respondingEarlier" : ""}
-                    ${level == 'Responding Later' ? "respondingLater" : ""}
-                    ${level == 'Exploring Earlier' ? "exploringEarlier" : ""}
-                    ${level == 'Exploring Middle' ? "exploringMiddle" : ""}
-                    ${level == 'Exploring Later' ? "exploringLater" : ""}
-                    ${level == 'Building Earlier' ? "buildingEarlier" : ""}
-                    }`}
-                  key={index}
-                  onClick={() => handleDevelopmentalLevelButton(level)}
-                  >
-                    <div className = {`text ${selectedDevelopmentalLevel == (level) ? "selected" : ""}`}>
-                      {level}
-                    </div>
-                  </button>
+                developmentalLevels.filter(level =>
+                  !(!(selectedMeasure === 'LLD 1: Understanding of Language (Receptive)' || selectedMeasure === 'LLD 3: Communication and Use of Language (Expressive)' || selectedMeasure === 'LLD 4: Reciprocal Communication and Conversation' || selectedMeasure === 'PD-HLTH 2: Gross Locomotor Movement Skills' || selectedMeasure === 'PD-HLTH 3: Gross Motor Manipulative Skills' || selectedMeasure === 'PD-HLTH 4: Fine Motor Skills')
+                    && level === 'Exploring Middle'))
+                .map((level, index) => (
+                    <button className = {`textContainer
+                      ${selectedDevelopmentalLevel.includes(level) ? "selected" : ""}
+                      ${level == 'Responding Earlier' ? "respondingEarlier" : ""}
+                      ${level == 'Responding Later' ? "respondingLater" : ""}
+                      ${level == 'Exploring Earlier' ? "exploringEarlier" : ""}
+                      ${level == 'Exploring Middle' ? "exploringMiddle" : ""}
+                      ${level == 'Exploring Later' ? "exploringLater" : ""}
+                      ${level == 'Building Earlier' ? "buildingEarlier" : ""}
+                      }`}
+                    key={index}
+                    onClick={() => handleDevelopmentalLevelButton(level)}
+                    >
+                      <div className = {`text ${selectedDevelopmentalLevel == (level) ? "selected" : ""}`}>
+                        {level}
+                      </div>
+                    </button>
+
 
 
               ))}
@@ -644,7 +647,7 @@ function DataPage() {
             </div>
           </div>
           { filteredData.length == 0 &&
-            <div className = "smallText">No Activities to Display</div>
+            <div className = "smallText" style = {{color: 'black'}}>No Activities to Display</div>
           }
 
 
