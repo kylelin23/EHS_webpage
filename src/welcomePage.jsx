@@ -9,7 +9,7 @@ function WelcomePage() {
     <div className="container">
       <header className="header header--compact" role="banner">
         <h1 className="header-title">Early Head Start Learning Library</h1>
-        <p className="header-subtitle">Create data-driven lesson and action plans for children’s growth</p>
+        <p className="header-subtitle">Create Data-Driven Lessons and Action Plans For Children’s Growth</p>
       </header>
 
 
@@ -66,7 +66,7 @@ function WelcomePage() {
             <div className="blob-text">
               <p><strong>Welcome teachers!</strong><strong>Here is a tool that is aligned to</strong><strong> DRDP 2015, allowing you to</strong> 
               <strong>find desired teaching</strong> <strong> strategies based on a child's</strong> 
-              <strong>developmental profile.</strong></p>
+              <strong>developmental profile</strong></p>
             </div>
           </div>
         </div>

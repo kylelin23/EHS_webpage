@@ -211,14 +211,14 @@ h1, p {
   width: 100%;
   height: auto;
   border-radius: 0;
-  translate: var(--photo-blob-x) var(--photo-blob-y);
+ 
 }
 
 /* button */
 .next-btn{
   position: absolute;            /* or 'fixed' if you want it pinned to the viewport */
   left: 50%;
-  bottom: 4vw;                   /* adjust to taste */
+  bottom: 2vw;                   /* adjust to taste */
   transform: translateX(-50%);   /* centers horizontally */
   
   /* keep your sizing/visuals */
