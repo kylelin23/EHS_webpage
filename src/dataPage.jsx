@@ -105,16 +105,8 @@ function DataPage() {
     label: "HSELOF"
   },
   {
-    value: "CSEFEL",
-    label: "CSEFEL"
-  },
-  {
-    value: "Pyramid Model",
-    label: "Pyramid Model"
-  },
-  {
-    value: "Attendance Works",
-    label: "Attendance Works"
+    value: "Other",
+    label: "Other"
   }
 ];
 
@@ -241,9 +233,14 @@ function DataPage() {
           });
       }
       if(selectedResources != "Not Selected"){
-        filteredData = selectedResources
-          ? filteredData.filter(row => row["Resource Agency"] === selectedResources)
-          : filteredData;
+        if (selectedResources === "Other") {
+            filteredData = filteredData.filter(row =>
+              ["CSEFEL", "Pyramid Model", "Attendance Works"].includes(row["Resource Agency"])
+            );
+        }
+        else {
+          filteredData = filteredData.filter(row => row["Resource Agency"] === selectedResources);
+        }
       }
 
       // IF IT IS FROG STREET INFANT SORT BY AGE THEN ACTIVITY CARD NUMBER
@@ -598,9 +595,7 @@ function DataPage() {
                       ${resource.value == 'ITERS-3 Materials' ? "iters" : ""}
                       ${resource.value == 'ASQ Activities' ? "asq" : ""}
                       ${resource.value == 'HSELOF' ? "hselof" : ""}
-                      ${resource.value == 'CSEFEL' ? "center" : ""}
-                      ${resource.value == 'Pyramid Model' ? "pyramid" : ""}
-                      ${resource.value == 'Attendance Works' ? "attendance" : ""}
+                      ${resource.value == 'Other' ? "other" : ""}
                       `}
                     key={index}
                     // onClick={() => setSelectedResources(resource)}
