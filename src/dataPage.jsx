@@ -247,11 +247,20 @@ function DataPage() {
           : filteredData;
       }
 
-
+      // IF IT IS FROG STREET INFANT SORT BY AGE THEN ACTIVITY CARD NUMBER
       if (selectedResources === "Frog Street Infant") {
         const parseAgeRange = (range) => {
           if (!range) return [Infinity, Infinity];
           return range.split("-").map(num => parseInt(num.trim(), 10));
+        };
+
+        const parseCard = (card) => {
+          if (!card) return [Infinity, Infinity];
+          const parts = card.split(",").map(p => p.trim());
+          if (parts.length === 1) {
+            return ["", parseInt(parts[0], 10) || Infinity];
+          }
+          return [parts[0], parseInt(parts[1], 10) || Infinity];
         };
 
         filteredData = filteredData.sort((a, b) => {
@@ -259,7 +268,106 @@ function DataPage() {
           const [bStart, bEnd] = parseAgeRange(b["Age Range (months) should be the numbers only, e.g., 6-12)"]);
 
           if (aStart !== bStart) return aStart - bStart;
+          if (aEnd !== bEnd) return aEnd - bEnd;
+
+          const [aLetter, aNum] = parseCard(a["FS ActivityCard #"]);
+          const [bLetter, bNum] = parseCard(b["FS ActivityCard #"]);
+
+          if (aLetter !== bLetter) return aLetter.localeCompare(bLetter);
+          return aNum - bNum;
+        });
+      }
+
+      // IF IT IS FROG STREET TODDLER SORT BY AG
+      if (selectedResources === "Frog Street Toddler") {
+        const parseToddlerCard = (card) => {
+          if (!card) return { type: "ZZZ", parts: [Infinity] }; // push empty to bottom
+
+          const parts = card.split(",").map(p => p.trim());
+
+          const type = parts[0];
+
+          const nums = parts.slice(1).map(n => parseInt(n, 10)).filter(x => !isNaN(x));
+
+          return { type, parts: nums };
+        };
+
+        const parseAgeRange = (range) => {
+          if (!range) return [Infinity, Infinity];
+          return range.split("-").map(num => parseInt(num.trim(), 10));
+        };
+
+        filteredData = filteredData.sort((a, b) => {
+          const aCard = parseToddlerCard(a["FS ActivityCard #"]);
+          const bCard = parseToddlerCard(b["FS ActivityCard #"]);
+
+          if (aCard.type !== bCard.type) {
+            if (aCard.type === "AG") return -1;
+            if (bCard.type === "AG") return 1;
+          }
+
+          for (let i = 0; i < Math.max(aCard.parts.length, bCard.parts.length); i++) {
+            const diff = (aCard.parts[i] || Infinity) - (bCard.parts[i] || Infinity);
+            if (diff !== 0) return diff;
+          }
+
+          const [aStart, aEnd] = parseAgeRange(a["Age Range (months) should be the numbers only, e.g., 6-12)"]);
+          const [bStart, bEnd] = parseAgeRange(b["Age Range (months) should be the numbers only, e.g., 6-12)"]);
+
+          if (aStart !== bStart) return aStart - bStart;
           return aEnd - bEnd;
+        });
+      }
+
+      // IF IT IS ITERS SORT BY ITEM NUMBER AND THEN AGE
+      if (selectedResources === "ITERS-3 Materials") {
+        const parseItemNumber = (card) => {
+          if (!card) return Infinity;
+          const match = card.match(/Item\s+(\d+)/i);
+          return match ? parseInt(match[1], 10) : Infinity;
+        };
+
+        const parseAgeRange = (range) => {
+          if (!range) return [Infinity, Infinity];
+          return range.split("-").map(num => parseInt(num.trim(), 10));
+        };
+
+        filteredData = filteredData.sort((a, b) => {
+          const aItem = parseItemNumber(a["FS ActivityCard #"]);
+          const bItem = parseItemNumber(b["FS ActivityCard #"]);
+
+          if (aItem !== bItem) return aItem - bItem;
+
+          const [aStart, aEnd] = parseAgeRange(a["Age Range (months) should be the numbers only, e.g., 6-12)"]);
+          const [bStart, bEnd] = parseAgeRange(b["Age Range (months) should be the numbers only, e.g., 6-12)"]);
+
+          if (aStart !== bStart) return aStart - bStart;
+          return aEnd - bEnd;
+        });
+      }
+
+      // IF IT IS ASQ SORT BY NUMBER AND THEN TITLE
+      if (selectedResources === "ASQ Activities") {
+        const parseNumber = (card) => {
+          if (!card) return Infinity;
+          const match = card.match(/\d+/);
+          return match ? parseInt(match[0], 10) : Infinity;
+        };
+
+        filteredData = filteredData.sort((a, b) => {
+          const aNum = parseNumber(a["FS ActivityCard #"]);
+          const bNum = parseNumber(b["FS ActivityCard #"]);
+
+          if (aNum !== bNum) return aNum - bNum;
+
+          return (a["Activity Title"] || "").localeCompare(b["Activity Title"] || "");
+        });
+      }
+
+      // IF IT IS HSELOF SORT BY TITLE
+      if (selectedResources === "HSELOF") {
+        filteredData = filteredData.sort((a, b) => {
+          return (a["Activity Title"] || "").localeCompare(b["Activity Title"] || "");
         });
       }
 
