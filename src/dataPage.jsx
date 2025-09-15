@@ -205,7 +205,7 @@ function DataPage() {
 
   // Grab data
   useEffect(() => {
-      fetch('realData.csv')
+      fetch('updatedData.csv')
         .then(response => response.text())
         .then(text => {
           const result = Papa.parse(text, { header: true }) // Put parsed data in result
@@ -351,9 +351,18 @@ function DataPage() {
         };
 
         filteredData = filteredData.sort((a, b) => {
+          const aIsParentRec =
+            (a["Activity Description"] || "").trim() ===
+            "Activity page to recommend to parents based on ASQ screening results";
+          const bIsParentRec =
+            (b["Activity Description"] || "").trim() ===
+            "Activity page to recommend to parents based on ASQ screening results";
+
+          if (aIsParentRec && !bIsParentRec) return -1;
+          if (!aIsParentRec && bIsParentRec) return 1;
+
           const aNum = parseNumber(a["FS ActivityCard #"]);
           const bNum = parseNumber(b["FS ActivityCard #"]);
-
           if (aNum !== bNum) return aNum - bNum;
 
           return (a["Activity Title"] || "").localeCompare(b["Activity Title"] || "");
@@ -363,9 +372,15 @@ function DataPage() {
       // IF IT IS HSELOF SORT BY TITLE
       if (selectedResources === "HSELOF") {
         filteredData = filteredData.sort((a, b) => {
-          return (a["Activity Title"] || "").localeCompare(b["Activity Title"] || "");
-        });
-      }
+        const aCard = a["FS ActivityCard #"] || "";
+        const bCard = b["FS ActivityCard #"] || "";
+
+        const cardCompare = aCard.localeCompare(bCard, undefined, { numeric: true });
+        if (cardCompare !== 0) return cardCompare;
+
+        return (a["Activity Title"] || "").localeCompare(b["Activity Title"] || "");
+      });
+    }
 
 
 
