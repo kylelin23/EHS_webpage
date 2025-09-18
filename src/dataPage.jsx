@@ -682,8 +682,7 @@ function DataPage() {
 
 
         <div className = "feedbackContainer">
-          <div className = "smallText" style = {{color: 'gray'}}>If you have questions or feedback please fill out this</div>
-          <a className = "smallText" style = {{}} href = "https://nhais.org/Intranet/Apps/Serv_Req/Serv_req_form.cfm?tnDeptID=72&tnQlink=0"><u> Service Request Form</u></a>
+          <div className = "smallText" style = {{color: 'gray'}}>If you have questions or feedback please fill out a service request form to the EHS Education Team</div>
         </div>
         {/* <div style = {{display: 'flex', justifyContent: 'center'}}>
           <div>
