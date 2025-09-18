@@ -85,20 +85,20 @@ function DataPage() {
 
   const resources = [
   {
-    value: "Frog Street Infant",
-    label: "Frog Street Infant"
-  },
-  {
-    value: "Frog Street Toddler",
-    label: "Frog Street Toddler"
-  },
-  {
     value: "ITERS-3 Materials",
     label: "ITERS"
   },
   {
     value: "ASQ Activities",
     label: "ASQ"
+  },
+  {
+    value: "Frog Street Infant",
+    label: "Frog Street Infant"
+  },
+  {
+    value: "Frog Street Toddler",
+    label: "Frog Street Toddler"
   },
   {
     value: "HSELOF",
